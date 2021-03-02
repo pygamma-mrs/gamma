@@ -34,4 +34,4 @@ PyGAMMA is officially supported on Windows, Linux, and OSX.
 GAMMA and PyGAMMA are part of and supported by the Vespa project (Versatile Simulation, Pulses and Analysis). For information about Vespa, please go to this site: https://github.com/vespa-mrs/vespa.io
 
 For the most up to date information on how to download, install, use, and contribute to GAMMA or PyGamma, go to this site: 
-https://github.com/gamma-mrs/gamma.io
+https://pygamma-mrs.github.io/gamma.io
