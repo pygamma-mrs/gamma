@@ -21,16 +21,17 @@ PyGAMMA is a library that exposes the GAMMA public intefaces within Python. It p
 
 Using PyGAMMA, users may access GAMMA commands interactively from a Python command prompt, or create complex Python programs. The Object Oriented design of GAMMA is not sacrificed in PyGAMMA. 
 
+## Licensing
 
 For licensing information see the LICENSE file in this directory.
 
 ## Platforms
 
-GAMMA is supported on Windows, Linux, OSX, and Solaris.
+GAMMA is officially supported on Windows, Linux, OSX, and Solaris.
 
 PyGAMMA is officially supported on Windows, Linux, and OSX.
 
-GAMMA and PyGAMMA are part of the Vespa project (Versatile Simulation, Pulses and Analysis). For information about Vespa, please go to this site: https://githum.com/vespa-mrs/vespa.io
+GAMMA and PyGAMMA are part of and supported by the Vespa project (Versatile Simulation, Pulses and Analysis). For information about Vespa, please go to this site: https://github.com/vespa-mrs/vespa.io
 
 For the most up to date information on how to download, install, use, and contribute to GAMMA or PyGamma, go to this site: 
-https://githum.com/gamma-mrs/gamma.io
+https://pygamma-mrs.github.io/gamma.io
