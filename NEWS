@@ -1,0 +1,179 @@
+Version 4.3.4 - 1 Mar 2021
+------------------------------------------------------------------------------
+
+So here we are another 5 years later! The major announcements for this release
+are that we now support Python 3 and that PyGAMMA/GAMMA is now being hosted on
+GitHub at:
+
+https://github.com/pygamma-mrs/gamma
+
+PyGAMMA documentation (with a smattering of GAMMA docs) is hosted on GitHub
+Pages at:
+
+https://pygamma-mrs.github.io/gamma.io/
+
+One downside of this transition is that historical changes in the code have not
+been ported from SVN to GitHub. Changes to the code will only be recorded going
+forward from this version.
+
+There have only been a few actual bug fixes within the GAMMA code. Primary 
+changes have been to facilitate the change to Python 3.  And a variety of 
+changes to the SWIG *.i file were made to extend their functionality and the
+available help() infomation about GAMMA objects while they are being used in 
+the Python environment. 
+
+This current version will be the last one that is released for both Python 2
+and Python 3.
+
+In no particular order, the following changes/fixes have been made:
+
+- In MultiSys, corrected the logic in CheckComp() which was inverted. Kudos 
+  to ross callaghan for reporting this bug.
+- Fixed a problem in MultiSys that the spin system was carried over  from 
+  one compnent to the next. This caused a crash with quadrupolar nuclei.
+  The simplest solution was to make sure that the spin system is empty for 
+  each component of the multi_sys system.
+- For PyGamma, made a few changes in order to align with new requirements
+  in compiler for update to Python 3.x.
+- Added 'autodoc' and '__str__ parsing' to a variety of the SWIG *.i files 
+  based on work done by Eric Hughes (Thanks Eric!!!). This will allow users
+  to get useful information from pythons 'print' statement for a number of 
+  Gamma objects.
+
+
+Version 4.3.3 - 25 Mar 2016
+------------------------------------------------------------------------------
+
+This is the first release in over 4 years, however there have been only
+a few actual bug fixes within the GAMMA code while the rest of the 
+changes have been due to code syntax and make file issues for compiling
+on newer versions of OSX, linux and Windows. A condensed listing of 
+GAMMA changes is given at the end of this email, while a full listing
+can always be found in our SVN log file.
+
+PyGamma has undergone both a significant and long overdue update.
+
+PyGamma installation files are now hosted at the Python Package Index (PyPI).
+32- and 64-bit binaries for Windows, OS X, and Linux are available. 
+Due to the prevalence of 64 bit platforms, version 4.3.3 is the last PyGamma 
+for which we plan to provide 32-bit binaries. 
+
+PyGamma is installable via pip, Python's preferred installer program.
+
+In no particular order, the following changes have been made:
+
+- Improved automation and error checking for make files and PyGamma builds
+- added extern declarations for evolve and evolve_ip
+- Changed the variable nil to nnil since this is now a predefined variable
+  under OSX 10.9.2 and clang
+- Added explicit braces for if/else to avoid warnings on OSX 10.9.
+- Changed friend definitions for proj to make it compile under OSX 10.9. 
+- Change handling of diagonal elements that are not fully real when building
+  a Hermitian matrix. We output a warning and truncate the imaginary part of 
+  the diagonal elements. Otherwise setting up exchange operators sometimes 
+  can become a problem.
+- Cleaned code syntax to eliminate compiler warnings.
+- Replaced the SigmaSS routines with new ones from 
+  balzan.riccardo@parisdescartes.fr which work independent of the basis the 
+  operators are in. Seems to work better than the original ones that depended
+  on the basis and only gave the correct steady-state density operator if 
+  they were in the default Hilbert basis.
+- Change std::_Ios_Openmode to std::ios_base::openmode which should be the 
+  portable implementations. This makes BiIOBase compile under Mac OSX 10.10.
+- Deleted the -isysroot which is as far as I can tell no longer needed on Mac.
+  I did not change the minimum OS version but on 10.10 you should set this to
+  10.9 or it will not compile. On my 10.9 Mac 10.6 still works.  
+- submitted by Michael Tesch
+  - fixed class name on renames, added python qualifier
+  - fix probably bug in io, cleanup compiler warnings related to time_t, 
+    which is a scalar
+  - remove silly star (pointer reference) to stop compiler warning
+- Corrected mistake when assigning initial value to time_t longtime in 
+  XWinOutd.cc  Should be a long and not a pointer
+- Changed wrong scaling of the A21 components of the spatial tensor in 
+  IntRank2A.cc
+- Bug reported by Riccardo Balzan: changed check for gcc version 3 and 4 to 
+  also include version 5 and  newer such that it compiles also with updated 
+  compilers.
+- Big changes to how PyGamma is packaged and distributed.The main driver for 
+  this is the goal of distributing PyGamma via wheel files rather than 
+  tarballs/zip files that contain prebuilt binaries for all platforms.
+- PyGamma no longer supports any Python versions other than 64-bit Python 2.7.
+
+
+
+Version 4.3.2 - 27 Jan 2012
+------------------------------------------------------------------------------
+There are no new features in this release. The only change is in the OS X 
+build process. Under OS X, the PyGAMMA library no longer uses BLAS. This 
+bypasses a problem where PyGAMMA crashsed when calling BLAS under OS X Lion 
+(10.7) given certain conditions.
+
+
+Version 4.3.1 - 29 August 2011
+------------------------------------------------------------------------------
+The main feature of this release is the new pulseshift() function added
+to PulAuxil. It's available to both GAMMA and PyGAMMA.
+
+Additionally -- 
+
+- In GenOp, completed SWIG-ing the functions of type /=, +=, etc. (so they 
+return a "gen_op &"). This allows these functions to be accessed from PyGAMMA.
+
+- Added real() and imag() functions to the GAMMA (PyGAMMA) class "complex"
+to allow retrieval of the internal components from Python.
+
+
+
+Version 4.3.0 - 5 July 2011
+------------------------------------------------------------------------------
+This release features an expanded PyGAMMA which exposes most of GAMMA 
+via Python. A full list of enhancements is below. Special thanks go to 
+Matthias Ernst for all of his help with this release.
+
+- Most of GAMMA is now available via Python. For a full list of what is and 
+isn't available, see here:
+http://scion.duhs.duke.edu/vespa/gamma/wiki/SwiggedGammaListing
+
+- BLAS/LAPACK integration is automatically enabled under OS X and Solaris and 
+it's easy to enable for some Linuxes. See here for more information:
+http://scion.duhs.duke.edu/vespa/gamma/wiki/GammaWithBlasLapack
+
+- We fixed a number of Makefile problems and made the Makefiles easier to 
+maintain.
+
+- We fixed the gamma script (on all platforms) for those of you that like to 
+write and compile your own C++ GAMMA code.
+
+- We cleaned all references to Boost (the old, unused Python interface) from 
+the Makefiles and code.
+
+
+
+Version 4.2.2 - 11 May 2011
+------------------------------------------------------------------------------
+This release fixes the broken 32 bit Python 2.6 and 2.7 libraries for OS X
+that were distributed with PyGAMMA 4.2.1.
+
+It contains no other changes.
+
+
+
+Version 4.2.1 - 10 May 2011
+------------------------------------------------------------------------------
+This version is a small update to PyGAMMA's installation routine and prebuilt
+libraries. It contains no functional changes to GAMMA or PyGAMMA.
+
+- We changed the PyGAMMA ZIP file to not contain an empty directory which
+some unzippers can't handle.
+
+- We added prebuilt PyGAMMA binaries for Python 2.7 on OS X, Linux and 
+Windows.
+
+
+
+Version 4.2.0 - 10 Nov 2010
+------------------------------------------------------------------------------
+This is the first version of GAMMA to be released from the UCSF/Duke
+collaboration.
+
