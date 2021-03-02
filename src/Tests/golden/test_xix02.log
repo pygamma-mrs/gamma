@@ -1,0 +1,34 @@
+
+
+Simulation of isotropic chemical shift by dipolar coupling
+==========================================================
+
+Parameters:
+rotation angle thetam    : 54.7356 Degree
+dipolar coupling constant: 23000 Hz
+CSA tensor (delta)       : 3000 Hz
+CSA tensor (etha)        : 0
+relativ orientation of CSA tensor: (0,0,0)
+rf-Field Strength:         100000 Hz
+Rate constant (k):         400 1/s
+# of sampling points:      1
+Powder Quality Number:     2 (100 points)
+Number of data points:     2048 points
+basic rf pulse frequency:  100000 Hz
+length of one prop. (dw):  0.0000333333 s
+phase angle (phi):         0 degree
+Modulation frequency:      30000 Hz
+MAS frequency:             30000 Hz
+time increments:           0.000000333333s
+Output filename:           test_xix02
+
+1	beta = 1.8	alpha = 97.2	gamma = 147.6
+11	beta = 19.8	alpha = 349.2	gamma = 183.6
+21	beta = 37.8	alpha = 241.2	gamma = 219.6
+31	beta = 55.8	alpha = 133.2	gamma = 255.6
+41	beta = 73.8	alpha = 25.2	gamma = 291.6
+51	beta = 91.8	alpha = 277.2	gamma = 327.6
+61	beta = 109.8	alpha = 169.2	gamma = 3.6
+71	beta = 127.8	alpha = 61.2	gamma = 39.6
+81	beta = 145.8	alpha = 313.2	gamma = 75.6
+91	beta = 163.8	alpha = 205.2	gamma = 111.6

@@ -1,0 +1,4 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Cygnus Solutions\Cygwin]
+"heap_chunk_in_mb"=dword:00000400

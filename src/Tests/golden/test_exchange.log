@@ -1,0 +1,35 @@
+
+
+Simulation of isotropic chemical shift by dipolar coupling
+==========================================================
+
+Parameters:
+rotation angle thetam          : 54.7356 Degree
+size of spin system            : 3 spins
+initial density operator       : Ix(ax,1)
+dipolar coupling constant (0,1) : 0 Hz
+relativ orientation of D tensor: (0,0,0)
+dipolar coupling constant (0,2) : 5000 Hz
+relativ orientation of D tensor: (0,0,0)
+dipolar coupling constant (1,2) : 0 Hz
+relativ orientation of D tensor: (0,0,0)
+isotropic chemical shift (0) : 2500 Hz
+isotropic chemical shift (1) : 0 Hz
+isotropic chemical shift (2) : 1500 Hz
+# of sampling points:          1
+# of rotor periods:            4000
+Powder Quality Number:         1  (50 orientations)
+Number of data points:         4000 points
+MAS frequency:                 50000 Hz
+time increments:               0.000001s
+dwell time:                    0.00002s
+jump rate constant             1000 s-1
+correlation time               0.0005 s
+rf-field amplitude:            24000 Hz
+Output filename:               test_exchange
+
+1	beta = 3.6	alpha = 50.4	gamma = 79.2
+11	beta = 39.6	alpha = 194.4	gamma = 151.2
+21	beta = 75.6	alpha = 338.4	gamma = 223.2
+31	beta = 111.6	alpha = 122.4	gamma = 295.2
+41	beta = 147.6	alpha = 266.4	gamma = 7.2

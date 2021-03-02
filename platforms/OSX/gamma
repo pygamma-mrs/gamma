@@ -1,0 +1,155 @@
+#!/bin/bash
+#############################################################################
+#
+#                                 G A M M A
+#
+#            Compilation Script for the GAMMA MR Simulation Project
+#                     Copyright (C) 1999 Scott A. Smith
+#                  National High Magnetic Field Laboratory
+#                         1800 E. Paul Dirac Drive
+#                     Tallahassee, FL, USA 32306-4005
+#
+#              On WWW see http://scion.duhs.duke.edu/vespa/gamma
+#
+#############################################################################
+
+#############################################################################
+#
+# First we set the "-v" option so that the command gamma -v will produce the
+# program version number.  This is in accordance with GNU Coding Standards
+# and used by the GAMMA testsuite (i.e. DejaGnu and Expect)
+#
+#############################################################################
+
+# The string below is intended to be replaced with the real version number
+# (e.g. 4.2.2) via sed during the `make install` portion of the Makefile.
+# Once this script is in /usr/local/bin, it should be set correctly.
+GAMMA_VERSION="VERSION_NUMBER_GOES_HERE"
+GAMMA_ARCH="mac-darwin"
+
+
+if [ "$1" = "-v" ]
+then
+  echo "GAMMA Version "$GAMMA_VERSION""
+  exit
+fi
+
+#############################################################################
+#
+# Here we set the "VERBOSE" option.  If this is not empty it will trigger the
+# script to spit out various bits of information to the screen when running.
+# This is helpful in debugging as well as letting people know that they are
+# running GAMMA.
+#
+#############################################################################
+
+VERBOSE="on"
+if [ ${VERBOSE} ]
+then
+  echo ""
+  echo ""
+  echo "              G  A  M  M  A"
+  echo ""
+  echo "             (Version "$GAMMA_VERSION")"
+  echo ""
+  echo "  Written by Scott Smith and Tilo Levante"
+  echo ""
+  echo "            Dr. Scott A. Smith"
+  echo "  National High Magnetic Field Laboratory"
+  echo "         1800 E. Paul Dirac Drive"
+  echo "      Tallahassee, FL, USA 32306-4005"
+  echo "           (c) 2002 S.A. Smith"
+  echo "        With modification thru 2010"
+  echo "      More information on the web at: "
+  echo "    http://scion.duhs.duke.edu/vespa/gamma"
+  echo ""
+fi
+
+#############################################################################
+#
+# Now We Must Set The Path To Where The GAMMA Headers Reside. This Should Be
+# Set Specifically In The GAMMA_INC Line Below.
+#############################################################################
+
+GAMMA_PATH=${GAMMA_PATH-/usr/local}
+GAMMA_INC=${GAMMA_PATH}"/include/gamma-"${GAMMA_VERSION}"/"
+GAMMA_LIB=${GAMMA_PATH}"/lib/gamma-"${GAMMA_VERSION}"/"
+
+#############################################################################
+#
+# Now We Must Know Which C++ Compiler To Use. Typically This Is GNU C++ Or
+# The egcs Version Of It.  Variable CXX Is Used To Indicate Where To Find The
+# C++ Compiler Command On The System. It Should Be Set Automatically By The
+# Configuration, But You Can Set It By Hand. Use Should Probably Use The Full
+# Path Although Just The Name Will Work If The Compiler Command Is In Your
+# Path. We Also Set Some Compiler Flags Too.  These Are Listed Below.  You
+# Can Change Them At Your Discretion.  Note That Command Line Options Will
+# Be Preferentially Used Over These Settings.
+#
+# CXX      - The Command To Invoke The C++ Compiler
+# CXXFLAGS - The Flags To Include When Using The C++ Compiler
+# LDFLAGS  - The Flags To Include When Linking Programs
+# NAME     - The Output File Name, Nothing Makes it a.out
+# GPROF    - Flag To Include Profiling, Blank is No Profiling
+# SLIB     - The Standard Library To Use, -lm is Math Library
+# ARG      - These are Any Other Arguments Wanted In
+# STRIP    - A Stripping Flag, -s Strips Executable Reducing Its Size
+#
+#############################################################################
+
+CXX="g++"
+CXXFLAGS="-g -O3 -Wall"
+EXTRALIB="-framework veclib"
+LDFLAGS=""
+NAME=
+GPROF=""
+SLIB="-lm"
+ARG=
+STRIP=""
+
+#############################################################################
+#
+# Now We Look More Closely At The "gamma" Command Used To Run This Script. In
+# Particular, We Look For The Additonal Compiler Flags. Known Options:
+#
+# -g	Compile With Debugging
+# -o    Use The Ensuing Name For The Output File
+# -p    Use Profiling When Compiling
+# *     Whatever Else, Just Accumulate Them In ARG
+#
+#############################################################################
+
+while [ "$1" != "" ]
+do
+  case "$1" in
+  -g)		  STRIP="-g"
+	  ;;
+  -o)             NAME="$1 $2"
+                  shift
+          ;;
+  -pg)	          GPROF="-pg"
+                  ARG="$ARG -pg"
+          ;;
+  *)	  ARG="$ARG $1"
+	  ;;
+  esac
+  shift
+done
+
+#############################################################################
+#
+# Finally For The GAMMA Program Compilation. First We Shall Test To See If
+# We Can Find The GAMMA Source Code Headers. If We Can Then We Probably Know
+# Where We Are and Can Go Ahead And Compile. That Means All The Header Files
+# Are In GAMMA_INC And The GAMMA Libraries Are In GAMMA_LIB.  When (If) We
+# Compile A GAMMA Based Program, The C++ Compiler Is Invoked With The Flags
+# Set As Specified Above And We Link To The GAMMA Libraries Specified Above.
+#
+#############################################################################
+
+if [ ${VERBOSE} ]
+then
+    echo ${CXX} ${CXXFLAGS} ${STRIP} ${ARG} -I${GAMMA_INC} -L${GAMMA_LIB} -lgamma ${EXTRALIB} -lm ${NAME}
+fi
+	${CXX}  ${CXXFLAGS} ${STRIP} ${ARG} -I${GAMMA_INC} -L${GAMMA_LIB} -lgamma ${EXTRALIB} -lm ${NAME}
+

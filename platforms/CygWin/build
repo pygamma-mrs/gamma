@@ -1,0 +1,85 @@
+#!/bin/sh
+
+#########################################################################
+#									#
+#             Handbuild Makefile ==> GAMMA Static Library               #
+#									#
+# This script is used to run the hand-mand Makefile present in this     #
+# directory to produce the GAMMA DLL. The Makefile is made bare-bones,  #
+# intentionally done so that it should be relatively easy to understand # 
+#									#
+# The command "make" produces two files of importance, the GAMMA DLL	#
+# named gamma.dll and the GAMMA DLL exprots library libgamma.dll.a      #
+# Both of these should/will be moved into the GAMMA binary directory.   # 
+# Since the build assumes Cygwin, that directory will named             #
+# GAMMAVER/i686-pc-cygwin where GAMMAVER is something like              #
+# c:/gamma/gamma-4.1.0.                                                 #
+#                                                                       #
+# The script is only for convenience. You can just run these steps by   #
+# hand to get the same results. The script just allows me to test any   #
+# changes in the makefile.		                                #
+#                                                                       #
+# Dr. Scott A. Smith                                                    #
+# July 2002                                                             #
+#									#
+#########################################################################
+
+#########################################################################
+# 1. Clean out any existing object files                                #
+#########################################################################
+
+echo
+make clean
+echo
+
+#########################################################################
+# 2. Build the GAMMA DLL and static exports library.			#
+#########################################################################
+
+echo
+make
+echo
+
+#########################################################################
+# 3. Move the static exports library into the GAMMA binary directory.   #
+#########################################################################
+
+echo
+make install
+echo
+
+#########################################################################
+# 4. Why not clean everything again? Just keep the library.		#
+#########################################################################
+
+echo
+make clean
+echo
+
+#########################################################################
+# 5. Build and run the demo program.					#
+#########################################################################
+
+echo
+make demo
+echo
+
+#########################################################################
+# 6. Build and run the test program.					#
+#########################################################################
+
+echo
+make test
+echo
+
+#########################################################################
+# 7. Do final cleaning							#
+#########################################################################
+
+echo
+echo
+make clean
+echo
+echo
+
+/.cleanup

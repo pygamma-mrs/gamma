@@ -1,0 +1,122 @@
+
+
+Simulation of isotropic chemical shift by dipolar coupling
+==========================================================
+
+Parameters:
+size of spin system            : 2 spins
+dipolar coupling constant (0,1) : 20000 Hz
+relativ orientation of D tensor: (0,0,0)
+isotropic chem shift(0) : 0 Hz
+delta of CSA tensor (0) : 8000 Hz
+eta of CSA tensor (0) : 0
+relativ orientation of CSA tensor: (0,0,0)
+isotropic chem shift(1) : 0 Hz
+delta of CSA tensor (1) : 8000 Hz
+eta of CSA tensor (1) : 0
+relativ orientation of CSA tensor: (0,0,0)
+Powder Quality Number:         12  (100000 orientations)
+Number of data points:         2048 points
+dwell time:                    0.000005s
+Output filename:               test_stat
+
+1	beta = 0.0018	alpha = 137.005	gamma = 97.938
+1001	beta = 1.8018	alpha = 342.205	gamma = 115.938
+2001	beta = 3.6018	alpha = 187.405	gamma = 133.938
+3001	beta = 5.4018	alpha = 32.6052	gamma = 151.938
+4001	beta = 7.2018	alpha = 237.805	gamma = 169.938
+5001	beta = 9.0018	alpha = 83.0052	gamma = 187.938
+6001	beta = 10.8018	alpha = 288.205	gamma = 205.938
+7001	beta = 12.6018	alpha = 133.405	gamma = 223.938
+8001	beta = 14.4018	alpha = 338.605	gamma = 241.938
+9001	beta = 16.2018	alpha = 183.805	gamma = 259.938
+10001	beta = 18.0018	alpha = 29.0052	gamma = 277.938
+11001	beta = 19.8018	alpha = 234.205	gamma = 295.938
+12001	beta = 21.6018	alpha = 79.4052	gamma = 313.938
+13001	beta = 23.4018	alpha = 284.605	gamma = 331.938
+14001	beta = 25.2018	alpha = 129.805	gamma = 349.938
+15001	beta = 27.0018	alpha = 335.005	gamma = 7.938
+16001	beta = 28.8018	alpha = 180.205	gamma = 25.938
+17001	beta = 30.6018	alpha = 25.4052	gamma = 43.938
+18001	beta = 32.4018	alpha = 230.605	gamma = 61.938
+19001	beta = 34.2018	alpha = 75.8052	gamma = 79.938
+20001	beta = 36.0018	alpha = 281.005	gamma = 97.938
+21001	beta = 37.8018	alpha = 126.205	gamma = 115.938
+22001	beta = 39.6018	alpha = 331.405	gamma = 133.938
+23001	beta = 41.4018	alpha = 176.605	gamma = 151.938
+24001	beta = 43.2018	alpha = 21.8052	gamma = 169.938
+25001	beta = 45.0018	alpha = 227.005	gamma = 187.938
+26001	beta = 46.8018	alpha = 72.2052	gamma = 205.938
+27001	beta = 48.6018	alpha = 277.405	gamma = 223.938
+28001	beta = 50.4018	alpha = 122.605	gamma = 241.938
+29001	beta = 52.2018	alpha = 327.805	gamma = 259.938
+30001	beta = 54.0018	alpha = 173.005	gamma = 277.938
+31001	beta = 55.8018	alpha = 18.2052	gamma = 295.938
+32001	beta = 57.6018	alpha = 223.405	gamma = 313.938
+33001	beta = 59.4018	alpha = 68.6052	gamma = 331.938
+34001	beta = 61.2018	alpha = 273.805	gamma = 349.938
+35001	beta = 63.0018	alpha = 119.005	gamma = 7.938
+36001	beta = 64.8018	alpha = 324.205	gamma = 25.938
+37001	beta = 66.6018	alpha = 169.405	gamma = 43.938
+38001	beta = 68.4018	alpha = 14.6052	gamma = 61.938
+39001	beta = 70.2018	alpha = 219.805	gamma = 79.938
+40001	beta = 72.0018	alpha = 65.0052	gamma = 97.938
+41001	beta = 73.8018	alpha = 270.205	gamma = 115.938
+42001	beta = 75.6018	alpha = 115.405	gamma = 133.938
+43001	beta = 77.4018	alpha = 320.605	gamma = 151.938
+44001	beta = 79.2018	alpha = 165.805	gamma = 169.938
+45001	beta = 81.0018	alpha = 11.0052	gamma = 187.938
+46001	beta = 82.8018	alpha = 216.205	gamma = 205.938
+47001	beta = 84.6018	alpha = 61.4052	gamma = 223.938
+48001	beta = 86.4018	alpha = 266.605	gamma = 241.938
+49001	beta = 88.2018	alpha = 111.805	gamma = 259.938
+50001	beta = 90.0018	alpha = 317.005	gamma = 277.938
+51001	beta = 91.8018	alpha = 162.205	gamma = 295.938
+52001	beta = 93.6018	alpha = 7.4052	gamma = 313.938
+53001	beta = 95.4018	alpha = 212.605	gamma = 331.938
+54001	beta = 97.2018	alpha = 57.8052	gamma = 349.938
+55001	beta = 99.0018	alpha = 263.005	gamma = 7.938
+56001	beta = 100.802	alpha = 108.205	gamma = 25.938
+57001	beta = 102.602	alpha = -288.86	gamma = 43.938
+58001	beta = 104.402	alpha = -83.6604	gamma = 61.938
+59001	beta = 106.202	alpha = -238.46	gamma = 79.938
+60001	beta = 108.002	alpha = -33.2604	gamma = 97.938
+61001	beta = 109.802	alpha = -188.06	gamma = 115.938
+62001	beta = 111.602	alpha = -342.86	gamma = 133.938
+63001	beta = 113.402	alpha = -137.66	gamma = 151.938
+64001	beta = 115.202	alpha = -292.46	gamma = 169.938
+65001	beta = 117.002	alpha = -87.2604	gamma = 187.938
+66001	beta = 118.802	alpha = -242.06	gamma = 205.938
+67001	beta = 120.602	alpha = -36.8604	gamma = 223.938
+68001	beta = 122.402	alpha = -191.66	gamma = 241.938
+69001	beta = 124.202	alpha = -346.46	gamma = 259.938
+70001	beta = 126.002	alpha = -141.26	gamma = 277.938
+71001	beta = 127.802	alpha = -296.06	gamma = 295.938
+72001	beta = 129.602	alpha = -90.8604	gamma = 313.938
+73001	beta = 131.402	alpha = -245.66	gamma = 331.938
+74001	beta = 133.202	alpha = -40.4604	gamma = 349.938
+75001	beta = 135.002	alpha = -195.26	gamma = 7.938
+76001	beta = 136.802	alpha = -350.06	gamma = 25.938
+77001	beta = 138.602	alpha = -144.86	gamma = 43.938
+78001	beta = 140.402	alpha = -299.66	gamma = 61.938
+79001	beta = 142.202	alpha = -94.4604	gamma = -162.328
+80001	beta = 144.002	alpha = -249.26	gamma = -144.328
+81001	beta = 145.802	alpha = -44.0604	gamma = -126.328
+82001	beta = 147.602	alpha = -198.86	gamma = -108.328
+83001	beta = 149.402	alpha = -353.66	gamma = -90.3276
+84001	beta = 151.202	alpha = -148.46	gamma = -72.3276
+85001	beta = 153.002	alpha = -303.26	gamma = -54.3276
+86001	beta = 154.802	alpha = -98.0604	gamma = -36.3276
+87001	beta = 156.602	alpha = -252.86	gamma = -18.3276
+88001	beta = 158.402	alpha = -47.6604	gamma = -0.3276
+89001	beta = 160.202	alpha = -202.46	gamma = -342.328
+90001	beta = 162.002	alpha = -357.26	gamma = -324.328
+91001	beta = 163.802	alpha = -152.06	gamma = -306.328
+92001	beta = 165.602	alpha = -306.86	gamma = -288.328
+93001	beta = 167.402	alpha = -101.66	gamma = -270.328
+94001	beta = 169.202	alpha = -256.46	gamma = -252.328
+95001	beta = 171.002	alpha = -51.2604	gamma = -234.328
+96001	beta = 172.802	alpha = -206.06	gamma = -216.328
+97001	beta = 174.602	alpha = -0.8604	gamma = -198.328
+98001	beta = 176.402	alpha = -155.66	gamma = -180.328
+99001	beta = 178.202	alpha = -310.46	gamma = -162.328

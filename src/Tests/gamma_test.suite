@@ -1,0 +1,42 @@
+suite: GammaTest
+
+command: runtests > outfile
+
+compare: iso_test.txt, golden/iso_test.txt
+compare: fid_test.txt, golden/fid_test.txt
+compare: spinecho_test.txt, golden/spinecho_test.txt
+compare: press_realpulses_test.txt, golden/press_realpulses_test.txt
+compare: spinecho_realpulses_test.txt, golden/spinecho_realpulses_test.txt
+compare: fid_exchange_test.txt, golden/fid_exchange_test.txt
+compare: outfile, golden/stdouterr.txt
+
+command: par_xixA 4spin_CCHH.sys 50 -4252 0 0 0 150 -46634 0 108 -29 150 -46634 0 108 -146 7 -6112 0 151 -29 7 -6112 0 151 -146 11 -43984 0 90 -177 -4800 1200 0.64 90 30 0  4800 5400 0.8 0 90 0 -200 800 0 0 109 -29 -200 800 0 0 109 -146 2 120 100000 45000 30e-6 15e-6 15e-6 1 120 513 0  test_parxix > test_parxix.log
+
+compare: test_parxix.log, golden/test_parxix.log
+compare: test_parxix.mat, golden/test_parxix.mat
+
+command: xix_dec 2spin_CH.sys 23000 3000 0.0 00.0 00.0 00.0 100000 00.0 1 0 2 100 30000 1 2048 test_xix01 > test_xix01.log
+
+compare: test_xix01.log, golden/test_xix01.log
+compare: test_xix01.mat, golden/test_xix01.mat
+
+command: xix_dec 2spin_CH.sys 23000 3000 0.0 00.0 00.0 00.0 100000 00.0 1 400 2 100 30000 1 2048 test_xix02 > test_xix02.log
+
+compare: test_xix02.log, golden/test_xix02.log
+compare: test_xix02.mat, golden/test_xix02.mat
+
+command: xix_dec 2spin_CH.sys  23000 3000 0.0 00.0 00.0 00.0 100000 00.0 1 4000 2 100 30000 1 2048 test_xix03 > test_xix03.log
+
+compare: test_xix03.log, golden/test_xix03.log
+compare: test_xix03.mat, golden/test_xix03.mat
+
+command: sl_exchange7_L 3spin_HH_ex.sys 0 0 0 0 5000 0 0 0 0 0 0 0 2500 0 1500 1 20 50000 4000 1 1 500e-6 24000 test_exchange > test_exchange.log
+
+compare: test_exchange.log, golden/test_exchange.log
+compare: test_exchange.mat, golden/test_exchange.mat
+
+command: hstat 2spin_HH.sys  20000 0 0 0  0 8000 0 0 0 0  0 8000 0 0 0 0 12 2048 5e-6 test_stat > test_stat.log
+
+compare: test_stat.log, golden/test_stat.log
+compare: test_stat.mat, golden/test_stat.mat
+

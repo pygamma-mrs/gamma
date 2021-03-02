@@ -1,0 +1,1337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{02c477d7-956f-4785-b87c-ddb8d9b2687f}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Basics Src">
+      <UniqueIdentifier>{9c480bf6-91e1-471f-9293-0acbb8af6d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Matrix Src">
+      <UniqueIdentifier>{957cb131-ad7e-4a81-b7d7-0f332ef90377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HSLib Src">
+      <UniqueIdentifier>{ca66130b-8692-4a8b-b3c7-f1af3e6fd3c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level1 Src">
+      <UniqueIdentifier>{757df490-612b-49ca-a769-3e61cbeb565d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LSLib Src">
+      <UniqueIdentifier>{4a0b2232-fb38-4924-9e62-5931f367f4c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level2 Src">
+      <UniqueIdentifier>{07606fe4-1eb4-48d5-917a-99b048994458}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GamIO Src">
+      <UniqueIdentifier>{1b2d23c6-920a-45dd-b227-a56a4aedcb82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GamIO Src\XWinNMRSrc">
+      <UniqueIdentifier>{9b21b87c-4c60-45d3-b205-928c5965286e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GamIO Src\MatlabSrc">
+      <UniqueIdentifier>{33087872-169d-4ba1-9b29-5599f560505d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GamIO Src\FrameMakerSrc">
+      <UniqueIdentifier>{6a381ec0-5aea-43b5-88d6-2cb0b40fa47a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GamIO Src\GnuplotSrc">
+      <UniqueIdentifier>{800861cd-16d1-440d-bb5e-bb9dfdca02dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bloch Src">
+      <UniqueIdentifier>{bc886797-7245-427a-9c2c-9d1a4355b030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BWR Src">
+      <UniqueIdentifier>{29b6eb8d-fc01-454c-a04f-7f16c1823c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Deprecated Src">
+      <UniqueIdentifier>{33598876-e4da-4f87-a9e0-7adb0b5d8dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ESRLib Src">
+      <UniqueIdentifier>{c0b7c47a-6d1b-4081-846c-b50e647e97fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Floquet Src">
+      <UniqueIdentifier>{b256e0e4-50be-40bb-b2e7-42f94b39896e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pulses Src">
+      <UniqueIdentifier>{291f7ac6-11a7-4e72-a246-13efeb2be3c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gradients Src">
+      <UniqueIdentifier>{3b7f4ae2-d66b-4230-bc31-449dc1236c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IntRank2 Src">
+      <UniqueIdentifier>{47b34689-c638-4bb5-a204-2be9471b0196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MultiSys Src">
+      <UniqueIdentifier>{d92e7c99-073c-4980-926d-cfc6fddb0da2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Testing Src">
+      <UniqueIdentifier>{2e41b376-8df2-4e30-97b1-e0fef94f0e6a}</UniqueIdentifier>
+      <Extensions>.cc</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{fe4116b3-1bb1-4315-b0e8-17639787ebd5}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Basics Hdr">
+      <UniqueIdentifier>{052f9185-afc5-4959-ad14-60e1b688c814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Matrix Hdr">
+      <UniqueIdentifier>{2529dbe5-63e8-43f1-86b9-fb442d1b5db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HSLib Hdr">
+      <UniqueIdentifier>{fc8cf411-3566-4d0d-a3ac-0992b9530961}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Level1 Hdr">
+      <UniqueIdentifier>{d7c2a964-be8f-456e-a929-94ceaeb84fc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LSLib Hdr">
+      <UniqueIdentifier>{e660e073-5962-45b0-9a79-07742ea49d1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Level2 Hdr">
+      <UniqueIdentifier>{a2a32b59-bf86-4124-8518-07980e7e1c27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GamIO Hdr">
+      <UniqueIdentifier>{c7731450-9193-4945-820d-f26c2ec4c3b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GamIO Hdr\XWinNMR Hdr">
+      <UniqueIdentifier>{8f4b79bf-6e37-4b09-b7b4-083682ae4194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GamIO Hdr\Matlab Hdr">
+      <UniqueIdentifier>{19b88c7d-cc5a-438c-920c-f7d44a1fde19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GamIO Hdr\FrameMaker Hdr">
+      <UniqueIdentifier>{f3be86ac-01a3-44e3-9a6c-116c861b23e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GamIO Hdr\Gnuplot Hdr">
+      <UniqueIdentifier>{a4c369f9-ffd3-41b6-9bd0-5e08d0572d2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bloch Hdr">
+      <UniqueIdentifier>{241cc904-e61d-4192-adb3-13d25d60f32c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BWR Hdr">
+      <UniqueIdentifier>{101ea248-7460-4b56-9f3f-15b21b6b2531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Deprecated Hdr">
+      <UniqueIdentifier>{3c207df5-1a43-4255-a834-69d25026e39f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ESRLib Hdr">
+      <UniqueIdentifier>{57ace6d4-e84c-4264-af80-2da10cdb2424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Floquet Hdr">
+      <UniqueIdentifier>{05369830-a21d-4eff-8ef5-d7ecdd88406d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Pulses Hdr">
+      <UniqueIdentifier>{f302fd92-c1c1-4cf4-aac6-01de80dba2ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gradients Hdr">
+      <UniqueIdentifier>{0d5d004d-7eef-4053-8877-23089853b16c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IntRank2 Hdr">
+      <UniqueIdentifier>{1327292c-5b5f-4131-bb99-d483b3694c39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MultiSys Hdr">
+      <UniqueIdentifier>{37f293e0-2004-4787-9bee-24da144aecb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Testing Hdr">
+      <UniqueIdentifier>{557e5299-b920-46f4-bd62-edadf8b97ade}</UniqueIdentifier>
+      <Extensions>.h</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{dece98ce-a0c1-4a23-addc-62fd046624dc}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\i686-pc-msvc\pygamma_wrap.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Basics\Gconstants.cc">
+      <Filter>Source Files\Basics Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Basics\Gutils.cc">
+      <Filter>Source Files\Basics Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Basics\Isotope.cc">
+      <Filter>Source Files\Basics Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Basics\IsotopeData.cc">
+      <Filter>Source Files\Basics Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Basics\ParamSet.cc">
+      <Filter>Source Files\Basics Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Basics\SinglePar.cc">
+      <Filter>Source Files\Basics Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Basics\StringCut.cc">
+      <Filter>Source Files\Basics Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\_matrix.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\col_vector.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\complex.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\d_matrix.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\h_matrix.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\i_matrix.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\matrix.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\MxModBas.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\n_matrix.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Matrix\row_vector.cc">
+      <Filter>Source Files\Matrix Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\Basis.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\GenOp.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\GenOpRep.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\HSacquire.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\HSanalyze.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\HSauxil.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\HSdecomp.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\HSdetect.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\HSham.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\HSprop.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\PulseI.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\PulseS.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\PulseShp.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\SpinOp.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\SpinOpCmp.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\SpinOpRot.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\SpinOpSng.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\SpinSys.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\HSLib\SpinSystem.cc">
+      <Filter>Source Files\HSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\coord.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\coord_vec.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\Exponential.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\ExProcessM.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\Lorentzian.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\nmr_tensor.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\SpaceT.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\SphHarmic.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\SpinT.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\Wigner.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level1\WindowFct.cc">
+      <Filter>Source Files\Level1 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LSLib\DensOp.cc">
+      <Filter>Source Files\LSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LSLib\LSacquire.cc">
+      <Filter>Source Files\LSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LSLib\LSanalyze.cc">
+      <Filter>Source Files\LSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LSLib\LSAux.cc">
+      <Filter>Source Files\LSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LSLib\LSprop.cc">
+      <Filter>Source Files\LSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LSLib\SuperOp.cc">
+      <Filter>Source Files\LSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\LSLib\sys_dynamic.cc">
+      <Filter>Source Files\LSLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level2\acquire1D.cc">
+      <Filter>Source Files\Level2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level2\BaseDecomp.cc">
+      <Filter>Source Files\Level2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level2\EAngles.cc">
+      <Filter>Source Files\Level2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level2\MutExch.cc">
+      <Filter>Source Files\Level2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level2\Quaternion.cc">
+      <Filter>Source Files\Level2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level2\RelaxBas.cc">
+      <Filter>Source Files\Level2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Level2\TrnsTable1D.cc">
+      <Filter>Source Files\Level2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\BinIOBase.cc">
+      <Filter>Source Files\GamIO Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\Gascii.cc">
+      <Filter>Source Files\GamIO Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWin1D.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWin2D.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinAcqPar.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinAcqu2s.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinAcqus.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinFid.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinMeta.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinOutd.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinProc2s.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinProcPar.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinProcs.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinPSet.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinSer.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\XWinSpec.cc">
+      <Filter>Source Files\GamIO Src\XWinNMRSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\MatLabFile.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML4DElem.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML4Tag.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5AF.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5AN.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5DA.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5DElem.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5Hdr.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5Imags.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5Reals.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5SubE.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\ML5Tag.cc">
+      <Filter>Source Files\GamIO Src\MatlabSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\FrameMaker.cc">
+      <Filter>Source Files\GamIO Src\FrameMakerSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\FrameMakerC.cc">
+      <Filter>Source Files\GamIO Src\FrameMakerSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\FrameMakerM.cc">
+      <Filter>Source Files\GamIO Src\FrameMakerSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\FrameMakerP.cc">
+      <Filter>Source Files\GamIO Src\FrameMakerSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\FrameMakerS.cc">
+      <Filter>Source Files\GamIO Src\FrameMakerSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\FrameMakerSph.cc">
+      <Filter>Source Files\GamIO Src\FrameMakerSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\Ggnuplot.cc">
+      <Filter>Source Files\GamIO Src\GnuplotSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\Ggnuplot1D.cc">
+      <Filter>Source Files\GamIO Src\GnuplotSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\GgnuplotC.cc">
+      <Filter>Source Files\GamIO Src\GnuplotSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\GamIO\GgnuplotSph.cc">
+      <Filter>Source Files\GamIO Src\GnuplotSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\Bloch.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochAcq.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochB.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochK.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochM.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochMx.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochR.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochSys.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\BlochTraj.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\DetVec.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Bloch\MagVec.cc">
+      <Filter>Source Files\Bloch Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxanalyze.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxBWRexch.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxCSA.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxDCSA.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxDip.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxExch.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxJ.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxNMR.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxProp.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxQCSA.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxQuad.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxRand.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\BWRRelax\relaxRF.cc">
+      <Filter>Source Files\BWR Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Deprecated\acquire.cc">
+      <Filter>Source Files\Deprecated Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Deprecated\block_1D.cc">
+      <Filter>Source Files\Deprecated Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Deprecated\block_2D.cc">
+      <Filter>Source Files\Deprecated Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ESRLib\CubicIon.cc">
+      <Filter>Source Files\ESRLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ESRLib\CubicIonData.cc">
+      <Filter>Source Files\ESRLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ESRLib\CubicSys.cc">
+      <Filter>Source Files\ESRLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\ESRLib\MagIon.cc">
+      <Filter>Source Files\ESRLib Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Floquet\Floq2Op.cc">
+      <Filter>Source Files\Floquet Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Floquet\FloqAcq.cc">
+      <Filter>Source Files\Floquet Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Floquet\FloqOp.cc">
+      <Filter>Source Files\Floquet Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulAuxil.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulCHIRP.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulComposite.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulCycle.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulDANTE.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulGARP.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulGauss.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulMLEV.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\Pulse.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulSinc.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulSupCycle.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulTrain.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulTrainSCyc.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulWALTZ.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Pulses\PulWaveform.cc">
+      <Filter>Source Files\Pulses Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Gradients\Gradients2.cc">
+      <Filter>Source Files\Gradients Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Gradients\GrdAcquire.cc">
+      <Filter>Source Files\Gradients Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Gradients\GrdDeprec.cc">
+      <Filter>Source Files\Gradients Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Gradients\GrdEvolve.cc">
+      <Filter>Source Files\Gradients Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Gradients\GrdPulses.cc">
+      <Filter>Source Files\Gradients Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Gradients\sys_gradz.cc">
+      <Filter>Source Files\Gradients Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\CartMx2A.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\CompRot.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\FrameMap.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\HDipolar.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\HElectronG.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\HQuadrup.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\HShiftAnis.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntCSA.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntCSAVec.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntDip.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntDipVec.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntG.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntGVec.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntHF.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntHFVec.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntQuad.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntQuadVec.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntRank2.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntRank2A.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntRank2ACmp.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\IntRank2T.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\IntRank2\SolidSys.cc">
+      <Filter>Source Files\IntRank2 Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\ExProcess.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiAux.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiExch.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiHam.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiHSLib.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiIPul.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiLib.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiLOp.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiSOp.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiSys.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\MultiWBR.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\MultiSys\SpinMap.cc">
+      <Filter>Source Files\MultiSys Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Testing\ClassTest.cc">
+      <Filter>Source Files\Testing Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Testing\ConstTest.cc">
+      <Filter>Source Files\Testing Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Testing\GamTest.cc">
+      <Filter>Source Files\Testing Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Testing\ModTest.cc">
+      <Filter>Source Files\Testing Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Testing\SectTest.cc">
+      <Filter>Source Files\Testing Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Testing\SingleTest.cc">
+      <Filter>Source Files\Testing Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\GamGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\ms_stdint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\GBasicsIF.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\Gconstants.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\Gutils.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\Isotope.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\IsotopeData.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\ParamSet.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\SinglePar.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Basics\StringCut.h">
+      <Filter>Header Files\Basics Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\_matrix.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\col_vector.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\complex.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\d_matrix.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\h_matrix.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\i_matrix.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\matrix.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\MxModBas.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\n_matrix.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Matrix\row_vector.h">
+      <Filter>Header Files\Matrix Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\Basis.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\GenOp.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\GenOpRep.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSacquire.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSanalyze.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSauxil.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSdecomp.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSdetect.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSham.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSLibIF.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\HSprop.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\PulseI.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\PulseS.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\PulseShp.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\SpinOp.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\SpinOpCmp.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\SpinOpRot.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\SpinOpSng.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\SpinSys.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\HSLib\SpinSystem.h">
+      <Filter>Header Files\HSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\coord.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\coord_vec.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\Exponential.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\ExProcessM.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\Level1IF.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\Lorentzian.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\nmr_tensor.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\SpaceT.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\SphHarmic.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\SpinT.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\Wigner.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level1\WindowFct.h">
+      <Filter>Header Files\Level1 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\LSLib\DensOp.h">
+      <Filter>Header Files\LSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\LSLib\LSacquire.h">
+      <Filter>Header Files\LSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\LSLib\LSanalyze.h">
+      <Filter>Header Files\LSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\LSLib\LSAux.h">
+      <Filter>Header Files\LSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\LSLib\LSprop.h">
+      <Filter>Header Files\LSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\LSLib\SuperOp.h">
+      <Filter>Header Files\LSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\LSLib\sys_dynamic.h">
+      <Filter>Header Files\LSLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level2\acquire1D.h">
+      <Filter>Header Files\Level2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level2\BaseDecomp.h">
+      <Filter>Header Files\Level2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level2\EAngles.h">
+      <Filter>Header Files\Level2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level2\MutExch.h">
+      <Filter>Header Files\Level2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level2\Quaternion.h">
+      <Filter>Header Files\Level2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level2\RelaxBas.h">
+      <Filter>Header Files\Level2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Level2\TrnsTable1D.h">
+      <Filter>Header Files\Level2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\BinIOBase.h">
+      <Filter>Header Files\GamIO Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\Gascii.h">
+      <Filter>Header Files\GamIO Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWin1D.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWin2D.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinAcqPar.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinAcqu2s.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinAcqus.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinFid.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinMeta.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinOutd.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinProc2s.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinProcPar.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinProcs.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinPSet.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinSer.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\XWinSpec.h">
+      <Filter>Header Files\GamIO Hdr\XWinNMR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\MatLabFile.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML4DElem.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML4Tag.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5AF.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5AN.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5DA.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5DElem.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5Hdr.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5Imags.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5Reals.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5SubE.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\ML5Tag.h">
+      <Filter>Header Files\GamIO Hdr\Matlab Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\FrameMaker.h">
+      <Filter>Header Files\GamIO Hdr\FrameMaker Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\FrameMakerC.h">
+      <Filter>Header Files\GamIO Hdr\FrameMaker Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\FrameMakerM.h">
+      <Filter>Header Files\GamIO Hdr\FrameMaker Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\FrameMakerP.h">
+      <Filter>Header Files\GamIO Hdr\FrameMaker Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\FrameMakerS.h">
+      <Filter>Header Files\GamIO Hdr\FrameMaker Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\FrameMakerSph.h">
+      <Filter>Header Files\GamIO Hdr\FrameMaker Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\Ggnuplot.h">
+      <Filter>Header Files\GamIO Hdr\Gnuplot Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\Ggnuplot1D.h">
+      <Filter>Header Files\GamIO Hdr\Gnuplot Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\GgnuplotC.h">
+      <Filter>Header Files\GamIO Hdr\Gnuplot Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\GamIO\GgnuplotSph.h">
+      <Filter>Header Files\GamIO Hdr\Gnuplot Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\Bloch.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochAcq.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochB.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochK.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochM.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochMx.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochR.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochSys.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\BlochTraj.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\DetVec.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Bloch\MagVec.h">
+      <Filter>Header Files\Bloch Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxanalyze.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxBWRexch.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxBWRIF.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxCSA.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxDCSA.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxDip.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxExch.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxJ.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxNMR.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxProp.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxQCSA.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxQuad.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxRand.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\BWRRelax\relaxRF.h">
+      <Filter>Header Files\BWR Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Deprecated\acquire.h">
+      <Filter>Header Files\Deprecated Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Deprecated\block_1D.h">
+      <Filter>Header Files\Deprecated Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Deprecated\block_2D.h">
+      <Filter>Header Files\Deprecated Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\ESRLib\CubicIon.h">
+      <Filter>Header Files\ESRLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\ESRLib\CubicIonData.h">
+      <Filter>Header Files\ESRLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\ESRLib\CubicSys.h">
+      <Filter>Header Files\ESRLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\ESRLib\MagIon.h">
+      <Filter>Header Files\ESRLib Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Floquet\Floq2Op.h">
+      <Filter>Header Files\Floquet Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Floquet\FloqAcq.h">
+      <Filter>Header Files\Floquet Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Floquet\FloqOp.h">
+      <Filter>Header Files\Floquet Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulAuxil.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulCHIRP.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulComposite.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulCycle.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulDANTE.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulGARP.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulGauss.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulMLEV.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\Pulse.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulSinc.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulSupCycle.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulTrain.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulTrainSCyc.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulWALTZ.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Pulses\PulWaveform.h">
+      <Filter>Header Files\Pulses Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Gradients\Gradients2.h">
+      <Filter>Header Files\Gradients Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Gradients\GradIF.h">
+      <Filter>Header Files\Gradients Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Gradients\GrdAcquire.h">
+      <Filter>Header Files\Gradients Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Gradients\GrdDeprec.h">
+      <Filter>Header Files\Gradients Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Gradients\GrdEvolve.h">
+      <Filter>Header Files\Gradients Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Gradients\GrdPulses.h">
+      <Filter>Header Files\Gradients Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Gradients\sys_gradz.h">
+      <Filter>Header Files\Gradients Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\CartMx2A.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\CompRot.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\FrameMap.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\HDipolar.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\HElectronG.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\HQuadrup.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\HShiftAnis.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntCSA.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntCSAVec.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntDip.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntDipVec.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntG.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntGVec.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntHF.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntHFVec.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntQuad.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntQuadVec.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntRank2.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntRank2A.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntRank2ACmp.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\IntRank2T.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\IntRank2\SolidSys.h">
+      <Filter>Header Files\IntRank2 Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\ExProcess.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiAux.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiExch.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiHam.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiHSLib.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiIPul.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiLib.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiLOp.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiSOp.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiSys.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\MultiWBR.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\MultiSys\SpinMap.h">
+      <Filter>Header Files\MultiSys Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Testing\ClassTest.h">
+      <Filter>Header Files\Testing Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Testing\ConstTest.h">
+      <Filter>Header Files\Testing Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Testing\GamTest.h">
+      <Filter>Header Files\Testing Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Testing\ModTest.h">
+      <Filter>Header Files\Testing Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Testing\SectTest.h">
+      <Filter>Header Files\Testing Hdr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Testing\SingleTest.h">
+      <Filter>Header Files\Testing Hdr</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

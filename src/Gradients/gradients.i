@@ -1,0 +1,5 @@
+%include "GrdAcquire.i"
+%include "Gradients2.i"
+%include "GrdEvolve.i"
+%include "GrdPulses.i"
+%include "sys_gradz.i"

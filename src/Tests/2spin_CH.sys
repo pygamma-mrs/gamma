@@ -1,0 +1,8 @@
+SysName   (2) : Two spin system - Spin system name
+NSpins    (0) : 2	- Number of Spins in the System
+Iso(0)    (2) : 13C	- Spin Isotope Type
+Iso(1)    (2) : 1H	- Spin Isotope Type
+v(0)      (1) : 000.0	- Chemical Shifts in Hz
+v(1)      (1) : 000.0	- Chemical Shifts in Hz
+J(0,1)    (1) :   0.0   - J coupling constant in Hz
+Omega     (1) : 400.00	- Spectrometer Frequency in MHz (1H based)

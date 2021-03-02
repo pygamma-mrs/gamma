@@ -1,0 +1,484 @@
+###############################################################################
+#                                                                             #
+#                                 G A M M A                                   #
+#                                                                             #
+#                Makefile for the GAMMA MR Simulation Project                 #
+#                      Copyright © 2000 Scott A. Smith                        #
+#                  National High Magnetic Field Laboratory                    #
+#                         1800 E. Paul Dirac Drive                            #
+#                     Tallahassee, FL, USA 32306-4005                         #
+#                          ssmith@magnet.fsu.edu                              #
+#                      On WWW See gamma.magnet.fsu.edu                        #
+#                                                                             #
+# =========================================================================== #
+#                                                                             #
+#                                 Quick Info                                  #
+#                                                                             #
+# 1.) Sets Up GAMMA Module Specific Variables. Included in Main Makefile.     #
+# 2.) Needs No Other Variables Externally Set.                                #
+# 3.) Any GAMMA Source Additons Must Be Included Herein.                      #
+#                                                                             #
+# =========================================================================== #
+#                                                                             #
+# The concern of this Makefile are the definitions used for specific GAMMA    #
+# modules. A complete set of variables that uniquely define each desired      #
+# module should be set herein. This allows the modules definititons to be     #
+# accessible to both the main GAMMA makefile as well as individual module     #
+# makefiles.                                                                  #
+#                                                                             #
+# Users are free to copy this file for personal use but may NOT give out      #
+# modifications with or without the GAMMA platform.  This and other makefiles #
+# are typically packaged with the full GAMMA source distribution.  The full   #
+# src distrubution may be obtained from the GAMMA WWW site above or any of    #
+# its mirrors.                                                                #
+#                                                                             #
+###############################################################################
+
+###############################################################################
+#                                                                             #
+#                  COLLECTIVE VARIABLES SPANNING ALL MODULES                  #
+#                                                                             #
+# These variables are summed over all the defined modules and then exported.  #
+# They can then be used by other Makefiles which need global definitons of    #
+# what files and directories GAMMA handles.                                   #
+#                                                                             #
+# ALLCCFILES  - The .cc files in all the modules.                             #
+# ALLHFILES   - The .h files in all the modules (relative to src).            #
+# ALLOFILES   - The .o files in all the modules.                              #
+# ALLMODDIRS  - The module directory names.                                   #
+# ALLMODHDRS  - The module summed header files.				      #
+#                                                                             #
+# These are defined empty below but they will be added to by each module.     #
+#                                                                             #
+###############################################################################
+
+ALLFILES   :=
+ALLCCFILES :=
+ALLHFILES  :=
+ALLOFILES  :=
+ALLMODDIRS :=
+ALLMODHDRS :=
+
+# Swig ".i" files.
+ALLIFILES  :=
+
+# GAMMA version
+GAMMAVERSION := $(strip $(shell cat ../../VERSION))
+# Here we calculate the major, minor and release versions. e.g. if 
+# GAMMAVERSION is 4.2.1, then major, minor and release are 4, 2, and 1 
+# respectively.
+# The trick with empty & space below comes straight from the GNU Make manual.
+# ref: http://www.gnu.org/software/make/manual/make.html#Syntax-of-Functions
+# _empty and _space are temporary variables.
+_empty:=
+_space:= $(_empty) $(_empty)
+MAJORVERSION   = $(word 1, $(subst .,$(_space), $(GAMMAVERSION)))
+MINORVERSION   = $(word 2, $(subst .,$(_space), $(GAMMAVERSION)))
+RELEASEVERSION = $(word 3, $(subst .,$(_space), $(GAMMAVERSION)))
+
+###############################################################################
+
+ALLIFILES += pygamma.i
+
+
+###############################################################################
+#                                                                             #
+#                         GAMMA BASICS MODULE VARIABLES                       #
+#                                                                             #
+###############################################################################
+
+BASICS      = Basics
+BASICSUL    = ------
+BASICSBASE  = Gutils Gconstants StringCut SinglePar ParamSet IsotopeData Isotope
+BASICSHDR   = GBasicsIF.h
+ALLFILES   += $(BASICSBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(BASICS)/, $(BASICSBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(BASICS)/, $(BASICSBASE)))
+ALLHFILES  += $(addprefix $(BASICS)/, $(BASICSHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(BASICS)/, $(BASICSBASE)))
+ALLMODDIRS += $(BASICS)
+ALLMODHDRS += $(BASICSHDR)
+BASICSTBAS  = TestBasics TestGconst TestGconstA TestSingPar TestSingParA TestSingParB\
+              TestIsoData TestStringCut
+
+BASICS_IBASE  = basics ParamSet SinglePar Isotope Gconstants StringCut\
+                IsotopeData Gutils
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(BASICS)/, $(BASICS_IBASE)))
+
+
+###############################################################################
+#                                                                             #
+#                          GAMMA MATRIX MODULE VARIABLES                      #
+#                                                                             #
+###############################################################################
+
+MATRIX      = Matrix
+MATRIXUL    = ------
+MATRIXBASE  = complex MxModBas _matrix i_matrix d_matrix h_matrix n_matrix\
+              matrix col_vector row_vector 
+MATRIXHDR   = MatrixIF.h
+ALLFILES   += $(MATRIXBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(MATRIX)/, $(MATRIXBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(MATRIX)/, $(MATRIXBASE)))
+ALLHFILES  += $(addprefix $(MATRIX)/, $(MATRIXHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(MATRIX)/, $(MATRIXBASE)))
+ALLMODDIRS += $(MATRIX)
+ALLMODHDRS += $(MATRIXHDR) 
+MATRIXTBAS  = TestMatrix
+
+MATRIX_IBASE  = matrix_inc matrix row_vector col_vector complex
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(MATRIX)/, $(MATRIX_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                      GAMMA HILBERT SPACE MODULE VARIABLES                   #
+#                                                                             #
+###############################################################################
+
+HSPACE      = HSLib
+HSPACEUL    = -----
+HSPACEBASE  = SpinOpSng SpinSys SpinOp SpinOpCmp SpinOpRot\
+              Basis GenOpRep GenOp SpinSystem\
+              HSacquire HSdetect HSdecomp HSprop HSham HSanalyze\
+              HSauxil PulseI PulseS PulseShp
+HSPACEHDR   = HSLibIF.h
+ALLFILES   += $(HSPACEBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(HSPACE)/, $(HSPACEBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(HSPACE)/, $(HSPACEBASE)))
+ALLHFILES  += $(addprefix $(HSPACE)/, $(HSPACEHDR)) 
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(HSPACE)/, $(HSPACEBASE)))
+ALLMODDIRS += $(HSPACE)
+ALLMODHDRS += $(HSPACEHDR) 
+HSPACETBAS  = TestHSLi1b
+
+HSPACE_IBASE  = hslib SpinSystem SpinSys GenOp HSham SpinOpCmp\
+				HSauxil PulseI PulseS Basis HSprop SpinOp\
+				HSanalyze HSdecomp PulseShp GenOpRep HSacquire\
+				HSdetect SpinOpRot SpinOpSng
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(HSPACE)/, $(HSPACE_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                          GAMMA LEVEL 1 MODULE VARIABLES                     #
+#                                                                             #
+###############################################################################
+
+LEVEL1      = Level1
+LEVEL1UL    = ------
+LEVEL1BASE  = coord coord_vec SphHarmic Wigner SpinT SpaceT nmr_tensor\
+              Exponential Lorentzian WindowFct ExProcessM
+LEVEL1HDR   = Level1IF.h
+ALLFILES   += $(LEVEL1BASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(LEVEL1)/, $(LEVEL1BASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(LEVEL1)/, $(LEVEL1BASE)))
+ALLHFILES  += $(addprefix $(LEVEL1)/, $(LEVEL1HDR)) 
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(LEVEL1)/, $(LEVEL1BASE)))
+ALLMODDIRS += $(LEVEL1)
+ALLMODHDRS += $(LEVEL1HDR)
+LEVEL1TBAS  = TestLevel1
+
+LEVEL1_IBASE  = level1 nmr_tensor SpinT SpaceT coord coord_vec SphHarmic\
+                Exponential ExProcessM Lorentzian Wigner WindowFct
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(LEVEL1)/, $(LEVEL1_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                     GAMMA LIOUVILLE SPACE MODULE VARIABLES                  #
+#                                                                             #
+###############################################################################
+
+LSPACE      = LSLib
+LSPACEUL    = -----
+LSPACEBASE  = SuperOp LSacquire LSprop sys_dynamic DensOp LSanalyze LSAux
+LSPACEHDR   = LSLibIF.h
+ALLFILES   += $(LSPACEBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(LSPACE)/, $(LSPACEBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(LSPACE)/, $(LSPACEBASE))) 
+ALLHFILES  += $(addprefix $(LSPACE)/, $(LSPACEHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(LSPACE)/, $(LSPACEBASE)))
+ALLMODDIRS += $(LSPACE)
+ALLMODHDRS += $(LSPACEHDR)
+
+LSPACE_IBASE  = lslib SuperOp LSacquire LSprop DensOp sys_dynamic LSanalyze LSAux
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(LSPACE)/, $(LSPACE_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                          GAMMA LEVEL 2 MODULE VARIABLES                     #
+#                                                                             #
+###############################################################################
+
+LEVEL2      = Level2
+LEVEL2UL    = ------
+LEVEL2BASE  = TrnsTable1D acquire1D Quaternion EAngles MutExch \
+              RelaxBas BaseDecomp
+LEVEL2HDR   = Level2IF.h
+ALLFILES   += $(LEVEL2BASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(LEVEL2)/, $(LEVEL2BASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(LEVEL2)/, $(LEVEL2BASE)))
+ALLHFILES  += $(addprefix $(LEVEL2)/, $(LEVEL2HDR)) 
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(LEVEL2)/, $(LEVEL2BASE)))
+ALLMODDIRS += $(LEVEL2)
+ALLMODHDRS += $(LEVEL2HDR)
+LEVEL2TBAS  = TestLevel2 TestTrnsTable1D Testacquire1D \
+              TestQuaternion TestQuaternionA TestQuaternionB TestQuaternionC
+
+LEVEL2_IBASE  = level2 TrnsTable1D acquire1D Quaternion EAngles MutExch RelaxBas BaseDecomp 
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(LEVEL2)/, $(LEVEL2_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                           GAMMA BLOCH MODULE VARIABLES                      #
+#                                                                             #
+###############################################################################
+
+BLOCH       = Bloch
+BLOCHUL     = -----
+BLOCHBASE   = MagVec DetVec BlochSys BlochAcq BlochB BlochR BlochK BlochTraj \
+              BlochM BlochMx Bloch
+BLOCHHDR    = BlochIF.h
+ALLFILES   += $(BLOCHBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(BLOCH)/, $(BLOCHBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(BLOCH)/, $(BLOCHBASE)))
+ALLHFILES  += $(addprefix $(BLOCH)/, $(BLOCHHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(BLOCH)/, $(BLOCHBASE)))
+ALLMODDIRS += $(BLOCH)
+ALLMODHDRS += $(BLOCHHDR)
+BLOCHTBAS   = 
+
+BLOCH_IBASE  = bloch_inc Bloch BlochSys MagVec BlochAcq
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(BLOCH)/, $(BLOCH_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                        GAMMA INPUT/OUTPUT MODULE VARIABLES                  #
+#                                                                             #
+###############################################################################
+
+GAMIO       = GamIO
+GAMIOUL     = -----
+GAMIOBASE   = BinIOBase Gascii GgnuplotC Ggnuplot1D GgnuplotSph Ggnuplot \
+              ML4DElem ML4Tag ML5Hdr ML5Tag ML5SubE ML5AF ML5DA ML5AN \
+              ML5Reals ML5Imags ML5DElem MatLabFile \
+              FrameMaker FrameMakerC FrameMakerM FrameMakerP FrameMakerS FrameMakerSph\
+              XWinPSet XWinAcqPar XWinAcqus XWinFid XWinProcPar XWinProcs \
+              XWinSpec XWinMeta XWinOutd XWin1D XWinAcqu2s XWinSer \
+              XWinProc2s XWin2D
+#              XWinProc2s XWin2D \
+#              FTNMR Felix
+#NMRiFile
+
+GAMIOHDR    = GammaIOIF.h
+ALLFILES   += $(GAMIOBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(GAMIO)/, $(GAMIOBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(GAMIO)/, $(GAMIOBASE)))
+ALLHFILES  += $(addprefix $(GAMIO)/, $(GAMIOHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(GAMIO)/, $(GAMIOBASE)))
+ALLMODDIRS += $(GAMIO)
+ALLMODHDRS += $(GAMIOHDR)
+
+###############################################################################
+#                                                                             #
+#                     GAMMA BWR RELAXATION MODULE VARIABLES                   #
+#                                                                             #
+###############################################################################
+
+BWRRLX      = BWRRelax
+BWRRLXUL    = --------
+BWRBASE     = relaxCSA  relaxDCSA relaxDip relaxExch relaxJ relaxQCSA \
+              relaxQuad relaxRand relaxNMR  relaxProp relaxRF relaxBWRexch \
+              relaxanalyze
+BWRHDR      = relaxBWRIF.h
+ALLFILES   += $(BWRBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(BWRRLX)/, $(BWRBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(BWRRLX)/, $(BWRBASE)))
+ALLHFILES  += $(addprefix $(BWRRLX)/, $(BWRHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(BWRRLX)/, $(BWRBASE)))
+ALLMODDIRS += $(BWRRLX)
+ALLMODHDRS += $(BWRHDR)
+BWRRLX_IBASE  = bwrrelax relaxCSA relaxDCSA relaxDip relaxExch relaxJ \
+	        relaxQCSA relaxQuad relaxRand relaxNMR relaxProp relaxRF
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(BWRRLX)/, $(BWRRLX_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                           GAMMA PULSE MODULE VARIABLES                      #
+#                                                                             #
+###############################################################################
+
+PULSE       = Pulses
+PULSEUL     = ------
+PULSEBASE   = PulGauss PulSinc PulAuxil Pulse PulComposite PulCycle \
+              PulDANTE PulGARP PulMLEV PulWALTZ PulCHIRP \
+              PulWaveform PulSupCycle PulTrain PulTrainSCyc
+PULSEHDR    = PulsesIF.h
+ALLFILES   += $(PULSEBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(PULSE)/, $(PULSEBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(PULSE)/, $(PULSEBASE)))
+ALLHFILES  += $(addprefix $(PULSE)/, $(PULSEHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(PULSE)/, $(PULSEBASE)))
+ALLMODDIRS += $(PULSE)
+ALLMODHDRS += $(PULSEHDR)
+
+PULSE_IBASE  = pulses PulWaveform PulComposite PulGauss PulSinc PulCycle \
+               PulMLEV Pulse PulTrain PulSupCycle PulCHIRP PulTrainSCyc \
+               PulGARP PulWALTZ PulDANTE PulAuxil
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(PULSE)/, $(PULSE_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                     GAMMA RANK 2 INTERACTIONS MODULE VARIABLES              #
+#                                                                             #
+###############################################################################
+
+IRANK2      = IntRank2
+IRANK2UL    = --------
+IRANK2BASE  = IntRank2ACmp IntRank2A IntRank2T IntRank2 IntCSA IntDip IntQuad IntG IntHF \
+              IntDipVec IntCSAVec IntQuadVec IntGVec IntHFVec CompRot SolidSys CartMx2A \
+              FrameMap HDipolar HQuadrup HShiftAnis HElectronG
+IRANK2HDR   = IntRank2IF.h
+ALLFILES   += $(IRANK2BASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(IRANK2)/, $(IRANK2BASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(IRANK2)/, $(IRANK2BASE)))
+ALLHFILES  += $(addprefix $(IRANK2)/, $(IRANK2HDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(IRANK2)/, $(IRANK2BASE)))
+ALLMODDIRS += $(IRANK2)
+ALLMODHDRS += $(IRANK2HDR)
+ALLMODHDRS += $(PULSEHDR)
+
+###############################################################################
+#                                                                             #
+#                         GAMMA FLOQUET MODULE VARIABLES                      #
+#                                                                             #
+###############################################################################
+
+FLOQ        = Floquet
+FLOQUL      = -------
+FLOQBASE    = FloqOp Floq2Op FloqAcq
+FLOQHDR     = FloquetIF.h
+ALLFILES   += $(FLOQBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(FLOQ)/, $(FLOQBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(FLOQ)/, $(FLOQBASE)))
+ALLHFILES  += $(addprefix $(FLOQ)/, $(FLOQHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(FLOQ)/, $(FLOQBASE)))
+ALLMODDIRS += $(FLOQ)
+ALLMODHDRS += $(FLOQHDR)
+ 
+###############################################################################
+#                                                                             #
+#                      GAMMA FIELD GRADIENTS MODULE VARIABLES                 #
+#                                                                             #
+###############################################################################
+
+FGRAD       = Gradients
+FGRADUL     = ---------
+FGRADBASE   = sys_gradz Gradients2 GrdPulses GrdEvolve GrdAcquire GrdDeprec
+FGRADHDR    = GradIF.h
+ALLFILES   += $(FGRADBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(FGRAD)/, $(FGRADBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(FGRAD)/, $(FGRADBASE)))
+ALLHFILES  += $(addprefix $(FGRAD)/, $(FGRADHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(FGRAD)/, $(FGRADBASE)))
+ALLMODDIRS += $(FGRAD)
+ALLMODHDRS += $(FGRADHDR)
+
+FGRAD_IBASE  = gradients sys_gradz Gradients2 GrdPulses GrdEvolve GrdAcquire
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(FGRAD)/, $(FGRAD_IBASE)))
+
+###############################################################################
+#                                                                             #
+#                      GAMMA MULTIPLE SYSTEM MODULE VARIABLES                 #
+#                                                                             #
+###############################################################################
+
+MULTISYS      = MultiSys
+MULTISYSUL    = --------
+MULTISYSBASE  = SpinMap ExProcess MultiSys MultiLib \
+                MultiSOp MultiHam MultiIPul MultiHSLib MultiLOp MultiWBR MultiExch
+MULTISYSHDR   = MultiSysIF.h
+ALLFILES     += $(MULTISYSBASE)
+ALLCCFILES   += $(addsuffix .cc, $(addprefix $(MULTISYS)/, $(MULTISYSBASE)))
+ALLHFILES    += $(addsuffix .h,  $(addprefix $(MULTISYS)/, $(MULTISYSBASE)))
+ALLHFILES    += $(addprefix $(MULTISYS)/, $(MULTISYSHDR))
+ALLOFILES    += $(addsuffix .o,  $(addprefix $(MULTISYS)/, $(MULTISYSBASE)))
+ALLMODDIRS   += $(MULTISYS)
+ALLMODHDRS   += $(MULTISYSHDR)
+
+MULTISYS_IBASE  = multisys_inc ExProcess MultiSys MultiLib MultiSOp\
+                  MultiIPul MultiHSLib MultiLOp MultiExch MultiHam\
+                  MultiWBR SpinMap
+
+ALLIFILES  += $(addsuffix .i,  $(addprefix $(MULTISYS)/, $(MULTISYS_IBASE)))
+
+
+###############################################################################
+#                                                                             #
+#                            GAMMA ESR MODULE VARIABLES                       #
+#                                                                             #
+###############################################################################
+
+ESR         = ESRLib
+ESRUL       = ------
+ESRBASE     = CubicIonData CubicIon
+# CubicSys ESRHam AngleSet Fibre
+ESRHDR      = ESRIF.h
+ALLFILES   += $(ESRBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(ESR)/, $(ESRBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(ESR)/, $(ESRBASE)))
+ALLHFILES  += $(addprefix $(ESR)/, $(ESRHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(ESR)/, $(ESRBASE)))
+ALLMODDIRS += $(ESR)
+ALLMODHDRS += $(ESRHDR)
+
+###############################################################################
+#                                                                             #
+#                         GAMMA DEPRECATED MODULE VARIABLES                   #
+#                                                                             #
+###############################################################################
+
+DEPREC      = Deprecated
+DEPRECUL    = ----------
+DEPRECBASE  = block_1D block_2D acquire
+DEPRECHDR   = DeprecIF.h
+ALLFILES   += $(DEPRECBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(DEPREC)/, $(DEPRECBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(DEPREC)/, $(DEPRECBASE))) 
+ALLHFILES  += $(addprefix $(DEPREC)/, $(DEPRECHDR)) 
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(DEPREC)/, $(DEPRECBASE)))
+ALLMODDIRS += $(DEPREC)
+ALLMODHDRS += $(DEPRECHDR)
+
+#molecule
+
+###############################################################################
+#                                                                             #
+#                         GAMMA TESTING MODULE VARIABLES                      #
+#                                                                             #
+###############################################################################
+
+GTEST       = Testing
+GTESTUL     = -------
+GTESTBASE   = ConstTest SingleTest SectTest ClassTest ModTest GamTest
+GTESTHDR    = TestingIF.h
+
+ALLFILES   += $(GTESTBASE)
+ALLCCFILES += $(addsuffix .cc, $(addprefix $(GTEST)/, $(GTESTBASE)))
+ALLHFILES  += $(addsuffix .h,  $(addprefix $(GTEST)/, $(GTESTBASE)))
+ALLHFILES  += $(addprefix $(GTEST)/, $(GTESTHDR))
+ALLOFILES  += $(addsuffix .o,  $(addprefix $(GTEST)/, $(GTESTBASE)))
+ALLMODDIRS += $(GTEST)
+ALLMODHDRS += $(GTESTHDR)
+
+###############################################################################
+#                                                                             #
+#                      GAMMA WWW INTERFACE MODULE VARIABLES                   #
+#                                                                             #
+###############################################################################
+
+WEBCGI     = WebCGI
+WEBCGIUL   = ------
+WEBCGIBASE = WWWGpage WWWcgi WWWclasses WWWplots WWWspsys WWWutils
+WEBCGIHDR  = WWWIF.h
+
+
+

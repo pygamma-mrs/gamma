@@ -1,0 +1,14 @@
+SysName   (2) : Three spin system - Spin system name
+NSpins    (0) : 3	- Number of Spins in the System
+Iso(0)    (2) : 1H	- Spin Isotope Type
+Iso(1)    (2) : 1H	- Spin Isotope Type
+Iso(2)    (2) : 1H	- Spin Isotope Type
+v(0)      (1) :      0.0	- Chemical Shifts in Hz
+v(1)      (1) :      0.0	- Chemical Shifts in Hz
+v(2)      (1) :      0.0	- Chemical Shifts in Hz
+J(0,1)    (1) :      0.0	- J coupling constant in Hz
+J(0,2)    (1) :      0.0	- J coupling constant in Hz
+J(1,2)    (1) :      0.0	- J coupling constant in Hz
+Omega     (1) :    300.0	- Spectrometer Frequency in MHz (1H based)
+MutExch(0) (2) : (1,2)          - Mutual Exchange process
+Kex(0)     (1) : 0.5            - Mutual Exchange Rate (1/Sec)

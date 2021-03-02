@@ -1,0 +1,73 @@
+
+
+Simulation of CP Under Double XiX Irradiation             
+==========================================================
+
+Parameters:
+rotation angle thetam          : 54.7356 Degree
+size of spin system            : 4 spins
+initial density operator       : Iz(ax,0)
+scalar  coupling constant (0,1) : 50 Hz
+dipolar coupling constant (0,1) : -4252 Hz
+relativ orientation of D tensor: (0,0,0)
+scalar  coupling constant (0,2) : 150 Hz
+dipolar coupling constant (0,2) : -46634 Hz
+relativ orientation of D tensor: (0,108,-29)
+scalar  coupling constant (0,3) : 150 Hz
+dipolar coupling constant (0,3) : -46634 Hz
+relativ orientation of D tensor: (0,108,-146)
+scalar  coupling constant (1,2) : 7 Hz
+dipolar coupling constant (1,2) : -6112 Hz
+relativ orientation of D tensor: (0,151,-29)
+scalar  coupling constant (1,3) : 7 Hz
+dipolar coupling constant (1,3) : -6112 Hz
+relativ orientation of D tensor: (0,151,-146)
+scalar  coupling constant (2,3) : 11 Hz
+dipolar coupling constant (2,3) : -43984 Hz
+relativ orientation of D tensor: (0,90,-177)
+isotropic chemical shift (0) : -4800 Hz
+anisotropy chemical shift (0): 1200 Hz
+asymmetry chemical shift (0) : 0.64
+relativ orientation of CSA tensor: (90,30,0)
+isotropic chemical shift (1) : 4800 Hz
+anisotropy chemical shift (1): 5400 Hz
+asymmetry chemical shift (1) : 0.8
+relativ orientation of CSA tensor: (0,90,0)
+isotropic chemical shift (2) : -200 Hz
+anisotropy chemical shift (2): 800 Hz
+asymmetry chemical shift (2) : 0
+relativ orientation of CSA tensor: (0,109,-29)
+isotropic chemical shift (3) : -200 Hz
+anisotropy chemical shift (3): 800 Hz
+asymmetry chemical shift (3) : 0
+relativ orientation of CSA tensor: (0,109,-146)
+# of sampling points:          120
+# of rotor periods:            1
+rf field amplitude on I spins: 100000 Hz
+rf field amplitude on S spins: 45000 Hz
+Powder Quality Number:         2  (100 orientations)
+Number of data points:         513 points
+MAS frequency:                 33333.3 Hz
+pulse length (XiX I):          0.000015 s
+pulse length (XiX I):          60 propagators
+pulse length (XiX S):          0.000015 s
+pulse length (XiX S):          60 propagators
+# of propagators/rotor cycle:  120
+length of one propagator:      0.00000025 s
+# of rotor cycles:             1
+# of evolution steps:          1
+flip angle per pulse (I):      540 degree
+flip angle per pulse (S):      243 degree
+time increments:               0.00000025s
+Output filename:               test_parxix
+
+1	beta = 1.8	alpha = 97.2	gamma = 147.6
+11	beta = 19.8	alpha = 349.2	gamma = 183.6
+21	beta = 37.8	alpha = 241.2	gamma = 219.6
+31	beta = 55.8	alpha = 133.2	gamma = 255.6
+41	beta = 73.8	alpha = 25.2	gamma = 291.6
+51	beta = 91.8	alpha = 277.2	gamma = 327.6
+61	beta = 109.8	alpha = 169.2	gamma = 3.6
+71	beta = 127.8	alpha = 61.2	gamma = 39.6
+81	beta = 145.8	alpha = 313.2	gamma = 75.6
+91	beta = 163.8	alpha = 205.2	gamma = 111.6
