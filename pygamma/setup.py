@@ -19,15 +19,10 @@ except ImportError:
 # Check Python version ASAP
 major, minor = sys.version_info[:2]
 
-if not (major,minor) in [(2,7), (3,7), (3,6)]:
-    msg = "Sorry, PyGAMMA requires Python 2.7 or 3.7, and this is Python %d.%d." % (major, minor)
+if not (major,minor) in [(2,7), (3,9), (3,8), (3,7), (3,6)]:
+    msg = "Sorry, PyGAMMA requires Python 2.7 or 3.6-3.9 and this is Python %d.%d." % (major, minor)
     print( msg )
     sys.exit(-1)
-
-#if (major != 2) or (minor != 7):
-#    msg = "Sorry, PyGAMMA requires Python 2.7, and this is Python %d.%d." % (major, minor)
-#    print msg
-#    sys.exit(-1)
 
 # The VERSION file will be in the current dir if this is being run from an
 # expanded tarball/ZIP file (i.e. a normal end user distro) or in the parent
