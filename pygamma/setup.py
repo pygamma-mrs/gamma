@@ -48,6 +48,9 @@ PyGamma is a Python wrapper around GAMMA that makes almost all of GAMMA's API av
 Python.
 
 Both GAMMA and PyGamma work on OS X, Linux, and Windows.
+
+As of version 4.3.4 only 64bit libraries are provided. This will also be the last release 
+that includes libraries for Python 2.
 """
 # Note that Python's distutils writes a PKG-INFO file that replaces the author metadata with
 # the maintainer metadata. As a result, it's impossible (AFAICT) to get correct author metadata
