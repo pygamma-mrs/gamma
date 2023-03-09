@@ -213,7 +213,7 @@ bool ExchProc::parseExch(string& Exval,
   int len = Exval.length();			// Length of input string
   int nc  = Exval.find("<=>");			// Number of chars before <=>
   string SLHS = Exval.substr(1, nc-1);		// Get string between ( & <=>
-  string SRHS = Exval.substr(nc+3, len-6);	// Get string between <=> & )
+  string SRHS = Exval.substr(nc+3, len-(5+SLHS.length()));	// Get string between <=> & )
   if(!SLHS.length())				// If there isn't anything on
     { 						// the left of <=>, then we don't
     XPerror(33, 1);				// know left hand side components
