@@ -80,6 +80,13 @@ extern "C"
                      const int*, __CLPK_doublecomplex*, const int*, double*, int*); 
   extern void zheev_(const char*, const char*, const int*, __CLPK_doublecomplex*, const int*,
                      double*, __CLPK_doublecomplex*, const int*, double*, int*);
+  extern void zgetri_(const int*, __CLPK_doublecomplex *, const int*, const int*, __CLPK_doublecomplex *,
+                      const int*, const int*);
+  extern void zhetri_(const char*, const int*, __CLPK_doublecomplex *, const int*, const int*, __CLPK_doublecomplex *,
+                      const int*);
+  extern void zgetrf_(const int*, const int*, __CLPK_doublecomplex *, const int*, int*, int*);
+  extern void zhetrf_(const char*, const int*, __CLPK_doublecomplex *, const int*, int*, __CLPK_doublecomplex *,
+                      const int*, int*);
 }
 #endif
 
@@ -3169,17 +3176,102 @@ void h_matrix::SymDiag(_matrix* (&D), _matrix* (&U)) { tqli(U, D, 1); }
 
 _matrix* h_matrix::inv()
   {
-// sosi - this will use up memory
-  int hd = rows_;			// Matrix dimension
-  i_matrix* I = new i_matrix(hd,hd);	// Construct an Identity matrix
-  int *indx;
-  indx = new int[hd];
-//  int indx[hd];				// Array for any row permutations
-  n_matrix* hLU = (n_matrix*)LU(indx);	// Perform LU decomposition of hmx
-  _matrix* hinvmx = I->LUinv(indx, hLU);
-  delete [] indx;
+#if defined(_USING_SUNPERFLIB_) || defined(_USING_LAPACK_)
+    int nrows = this->rows();
+    int ncols = this->cols();
+    _matrix* hinvmx;
+    if(nrows < 32)  // then do it the old fashioned gamma way.
+    {
+      int hd = rows_;			// Matrix dimension
+      i_matrix* I = new i_matrix(hd,hd);	// Construct an Identity matrix
+      int *indx;
+      indx = new int[hd];
+      n_matrix* hLU = (n_matrix*)LU(indx);	// Perform LU decomposition of hmx
+      hinvmx = I->LUinv(indx, hLU);
+      delete [] indx;
+    }
+    else
+    {
+        hinvmx = new n_matrix(nrows, ncols);
+        this->convert(hinvmx);
+        n_matrix* hinvmx1 = (n_matrix *)hinvmx->transpose();
+#ifdef _USING_SUNPERFLIB_
+        char uplo = 'U';  // Upper triangular...
+        int  N    = nrows;
+        int  lda  = nrows;
+        int *ipiv = new int[N];
+        int info = -55555;
+        zhetrf(uplo, N, (doublecomplex *)hinvmx1->data, lda, ipiv , &info);
+        zhetri(uplo, N, (doublecomplex *)hinvmx1->data, lda, ipiv , &info);
+#endif
+#ifdef _USING_LAPACK_
+        char uplo = 'U';  // Upper triangular...
+#if defined(__LP64__) /* this is needed on MacOS CLAPACK to make types match*/
+        int  N    = nrows;
+        int  lda  = nrows;
+        int *ipiv = new int[N];
+        int lwork = N*N;
+        int info = -55555;
+#else
+        long int  N    = nrows;
+        long int  lda  = nrows;
+        long int *ipiv = new long int[N];
+        long int lwork = N*N;
+        long int info = -55555;
+#endif
+        complex *work= new complex [2*lwork];
+        zhetrf_(&uplo, &N, (__CLPK_doublecomplex *) hinvmx1->data, &lda, ipiv, (__CLPK_doublecomplex *) work, &lwork, &info); 
+        if(info == 0)
+        { // all is well.
+        }
+        else if (info > 0)
+        { std::cerr << "\nh_matrix: zhetrf failed to converge\n";
+        }
+        else if(info == -55555)
+        { std::cerr << "\nReturn value, 'info', does not appear to have been set\n";
+        }
+        else
+        { std::cerr << "\ninfo = " << info << "\n";
+        }
+        zhetri_(&uplo, &N, (__CLPK_doublecomplex *) hinvmx1->data, &lda, ipiv, (__CLPK_doublecomplex *) work, &info); 
+#endif
+        if(info == 0)
+        { // all is well.
+        }
+        else if (info > 0)
+        { std::cerr << "\nh_matrix: Inversion failed to converge\n";
+        }
+        else if(info == -55555)
+        { std::cerr << "\nReturn value, 'info', does not appear to have been set\n";
+        }
+        else
+        { std::cerr << "\ninfo = " << info << "\n";
+        }
+
+        // Copy results back into D and U.
+        complex *hmxp = hinvmx1->data;
+        for(int i=0; i<nrows; i++)
+        { for(int j=0; j<ncols; j++)
+          { hinvmx->put(hmxp[j*nrows+i], i, j);
+          }
+        }
+        delete hinvmx1;
+        delete [] ipiv;
+#ifdef _USING_LAPACK_
+        delete [] work;
+#endif
+//      std::cerr << "h_matrix diag: using sunperflib code\n";
+    } 
+#else
+    int hd = rows_;			// Matrix dimension
+    i_matrix* I = new i_matrix(hd,hd);	// Construct an Identity matrix
+    int *indx;
+    indx = new int[hd];
+    n_matrix* hLU = (n_matrix*)LU(indx);	// Perform LU decomposition of hmx
+    _matrix* hinvmx = I->LUinv(indx, hLU);
+    delete [] indx;
+#endif
   return hinvmx; 
-//  return I->LUinv(indx, hLU);		// Return the inverse via LU*hinv=I;
   }
 
 _matrix* h_matrix::LU(int *indx)

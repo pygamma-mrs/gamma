@@ -99,7 +99,7 @@ GAMMA_LIB=${GAMMA_PATH}"/lib/gamma-"${GAMMA_VERSION}"/"
 
 CXX="g++"
 CXXFLAGS="-g -O3 -Wall"
-EXTRALIB="-framework veclib"
+EXTRALIB="-framework Accelerate"
 LDFLAGS=""
 NAME=
 GPROF=""

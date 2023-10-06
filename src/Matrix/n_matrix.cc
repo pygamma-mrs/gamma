@@ -77,6 +77,13 @@ extern "C"
                      const int*, __CLPK_doublecomplex*, const int*, double*, int*);
   extern void zheev_(const char*, const char*, const int*, __CLPK_doublecomplex*, const int*,
                      double*, __CLPK_doublecomplex*, const int*, double*, int*);
+  extern void zgetri_(const int*, __CLPK_doublecomplex *, const int*, int*, __CLPK_doublecomplex *,
+                      const int*, int*);
+  extern void zhetri_(const char*, const int*, __CLPK_doublecomplex *, const int*, int*, __CLPK_doublecomplex *,
+                      int*);
+  extern void zgetrf_(const int*, const int*, __CLPK_doublecomplex *, const int*, int*, int*);
+  extern void zhetrf_(const char*, const int*, __CLPK_doublecomplex *, const int*, int*, __CLPK_doublecomplex *,
+                      int*);
 }
 #endif
 
@@ -2690,22 +2697,112 @@ _matrix* n_matrix::inv()
 
   {
   if(unitary) return adjoint();			// This is real new (sosi)
-  int nd = rows_;				// Matrix dimension
-  if(nd != cols_)
-    {
+  int nrows = rows_;				// Matrix dimension
+  if(nrows != cols_)
+  {
     NMxerror(14,1);				//    Bad rectangular array use
     NMxfatal(25);				//    Cannot take inverse
-    }
+  }
+  #if defined(_USING_SUNPERFLIB_) || defined(_USING_LAPACK_)
+  _matrix *mxinv;
+  if(nrows < 16)  // then do it the old fashioned gamma way.
+  { int *indx;
+    indx = new int[nrows];
+    n_matrix* nLU = new n_matrix(*this);          // Copy input array for LU decomp
+    nLU->LU_decomp(indx);                         // LU decomposition of nLU
+    n_matrix* I = new n_matrix(nrows,nrows,complex0);   // Constuct a new n_matrix
+    for(int i=0; i<nrows; i++) I->put(complex1,i,i); // Make it the identity matrix
+    mxinv = I->LUinv(indx,nLU);          // Back solve for inverse
+    delete nLU;                                   // Clean up the nLU matrix
+    delete I;                                     // Clean up the I matrix
+    delete [] indx;
+  }
+  else
+  {
+        mxinv = new n_matrix(nrows, nrows, complex0);
+        n_matrix* mxinv1 = (n_matrix *)this->transpose();
+
+#ifdef _USING_SUNPERFLIB_
+        int  N    = nrows;
+        int  lda  = nrows;
+        int *ipiv = new int[N];
+        int info = -55555;
+        zgetrf(N, N, (doublecomplex *) mxinv1->data, lda, ipiv, &info);
+        zgetri(N, (doublecomplex *)mxinv1->data, lda, ipiv , &info);
+#endif
+#ifdef _USING_LAPACK_
+#if defined(__LP64__) /* this is needed on MacOS CLAPACK to make types match*/
+        int  N    = nrows;
+        int  lda  = nrows;
+        int *ipiv = new int[N];
+        int info = -55555;
+        int lwork = N*N;
+#else
+        long int  N    = nrows;
+        long int  lda  = nrows;
+        long int *ipiv = new long int[N];
+        long int info = -55555;
+        long int lwork = N*N;
+#endif
+        complex *work= new complex [2*lwork];
+        zgetrf_(&N, &N, (__CLPK_doublecomplex *) mxinv1->data, &lda, ipiv, &info);
+        if(info == 0)
+        { // all is well.
+        }
+        else if (info > 0)
+        { std::cerr << "\nn_matrix: zgetrf failed to converge\n";
+          std::cerr << "info = " << info << "\n";
+        }
+        else if(info == -55555)
+        { std::cerr << "\nReturn value, 'info', does not appear to have been set\n";
+        }
+        else
+        { std::cerr << "\ninfo = " << info << "\n";
+        }
+        zgetri_(&N, (__CLPK_doublecomplex *) mxinv1->data, &lda, ipiv, (__CLPK_doublecomplex *) work, &lwork, &info);
+#endif
+        if(info == 0)
+        { // all is well.
+        }
+        else if (info > 0)
+        { std::cerr << "\nn_matrix: Inversion failed to converge\n";
+          std::cerr << "info = " << info << "\n";
+        }
+        else if(info == -55555)
+        { std::cerr << "\nReturn value, 'info', does not appear to have been set\n";
+        }
+        else
+        { std::cerr << "\ninfo = " << info << "\n";
+        }
+   
+        // Copy results back into D and U.
+        complex *hmxp = mxinv1->data;
+        for(int i=0; i<nrows; i++)
+        { for(int j=0; j<nrows; j++)
+          { mxinv->put(hmxp[j*nrows+i], i, j);
+          }
+        }
+        delete mxinv1;
+        delete [] ipiv;
+#ifdef _USING_LAPACK_
+        delete [] work;
+#endif
+//      std::cerr << "n_matrix inv: using sunperflib code\n";
+
+
+  }
+  #else
   int *indx;
-  indx = new int[nd];
+  indx = new int[nrows];
   n_matrix* nLU = new n_matrix(*this);          // Copy input array for LU decomp
   nLU->LU_decomp(indx);                         // LU decomposition of nLU
-  n_matrix* I = new n_matrix(nd,nd,complex0);   // Constuct a new n_matrix
-  for(int i=0; i<nd; i++) I->put(complex1,i,i); // Make it the identity matrix
+  n_matrix* I = new n_matrix(nrows,nrows,complex0);   // Constuct a new n_matrix
+  for(int i=0; i<nrows; i++) I->put(complex1,i,i); // Make it the identity matrix
   _matrix* mxinv = I->LUinv(indx,nLU);          // Back solve for inverse
   delete nLU;                                   // Clean up the nLU matrix
   delete I;                                     // Clean up the I matrix
   delete [] indx;
+#endif
   return mxinv;                                 // Return the inverse of nmx
   }
 
@@ -4027,7 +4124,7 @@ void n_matrix::diag(_matrix* (&mxd), _matrix* (&mxev))
   else						// Matrix isnt Hermitian
     {
 #if defined(_USING_SUNPERFLIB_) || defined(_USING_LAPACK_)
-    if(nrows < 128)  // then do it the old fashioned gamma way.
+    if(nrows < 32)  // then do it the old fashioned gamma way.
     {
       n_matrix mx2(*this);			// Workspace to diagonalization
       complex *tmp = mx2.corth(0,nrows-1);		// To upper Hessenberg form
@@ -4038,7 +4135,7 @@ void n_matrix::diag(_matrix* (&mxd), _matrix* (&mxev))
         NMxfatal(28);				// Unable to diagonalize
       }						// Almost surely bad input
       delete [] tmp;				// Delete tmp array from corth
-//    std::cerr << "n_matrix diag: using gamma code\n";
+//    std::cerr << "n_matrix diag: using gamma code: dimension = " << nrows << "\n";
     }
     else
     {
