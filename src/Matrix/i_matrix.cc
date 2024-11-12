@@ -285,7 +285,9 @@ hermitian_type i_matrix::test_hermitian(double d) const
 
 matrix_type i_matrix::stored_type( ) const { return i_matrix_type; }
 matrix_type i_matrix::test_type(const matrix_type m, const double d) const	
-                                           { return m; double dtmp; dtmp=d; }
+                                           { return m;}
+// 10/11/2024 changed by MAER to eliminate compiler complaints
+//                                           { return m; double dtmp; dtmp=d; }
 std::string i_matrix::mxtype()        const { return std::string("Identity"); }
 std::string i_matrix::mxtype(bool pf) const { return std::string("Identity"); }
 
@@ -500,7 +502,7 @@ _matrix* i_matrix::divide(_matrix* mx)
     IMxfatal(3, "divide");			//   Fail in divide function
     }
   else
-    switch(mx->stored_type())
+  { switch(mx->stored_type())
       {
       case i_matrix_type: return this; break;   // Divide imx into imx
       case d_matrix_type:                       // Divide imx by dmx
@@ -513,6 +515,7 @@ _matrix* i_matrix::divide(_matrix* mx)
         return mx->inv();			// Return inv(mx)
         break;
       }   
+  }
     IMxerror(6, " mx1 / mx2", 1);		//   Matrix divide problems
     IMxerror(3, " divide", 1);			//   Matrix divide problems
     IMxfatal(25);				//   Not fully implemented
@@ -745,6 +748,7 @@ _matrix* i_matrix::adjoint()   { return this; }		    // imx self adjoint
 _matrix* i_matrix::negate()    { return new d_matrix(rows_,cols_,-complex1); } 
 _matrix* i_matrix::IM()        { return new d_matrix(rows_,cols_, complex0); }
 _matrix* i_matrix::mxexp()     { return new d_matrix(rows_,cols_, exp(1.0)); }
+_matrix* i_matrix::mxpade()    { return new d_matrix(rows_,cols_, exp(1.0)); }
 complex  i_matrix::trace()     { return complex(rows_); }
 
 /*     Function    Output                       Description
@@ -1030,9 +1034,11 @@ void i_matrix::print(std::ostream& ostr, const MxPrint& PFlgs) const
   for(i=0; i<rows_; i++ )		// Loop rows
     {
     ostr << sp;
-    for(j=0; j<i; j++)       ostr << "0 ";
-                             ostr << "1 ";
-    for(j=i+1; j<cols_; j++) ostr << "0 ";
+    for(j=0; j<i; j++)  
+      ostr << "0 ";
+    ostr << "1 ";
+    for(j=i+1; j<cols_; j++)
+      ostr << "0 ";
     ostr << "\n";
     }
   }

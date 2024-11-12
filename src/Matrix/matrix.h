@@ -366,7 +366,8 @@ MSVCDLL matrix& operator /= (double d);
           conj                mx1 = mx*         conjugate   <i|mx1|j>=<i|mx*|j>
         transpose             mx1 = mxt         transpose   <i|mx1|j>=<j|mx|i>
         adjoint               mx1 = mxt*        adjoint     <i|mx1|j>=<j|mx*|i>
-          exp                 mx1 = exp(mx)     exponential <i|mx1|j>=<j|mx*|i>
+          exp                 mx1 = exp(mx)     exponential by diagonalization
+          expm                mx1 = expm(mx)    exponential by Pade approximation
          trace                  z = Tr{mx}      trace       z = sum <i|mx|i> */
 
 MSVCDLL friend matrix  Re(const matrix& mx);
@@ -385,6 +386,7 @@ MSVCDLL matrix  conj()       const;
 MSVCDLL matrix  transpose()  const; 
 MSVCDLL matrix  adjoint()    const;
 MSVCDLL matrix  exp()        const;
+MSVCDLL matrix  expm()       const;
 MSVCDLL complex trace()      const;    
 
 /*     Function    Output                       Description

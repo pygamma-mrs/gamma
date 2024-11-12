@@ -290,6 +290,7 @@ virtual _matrix* conjugate();
 virtual _matrix* transpose();
 virtual _matrix* adjoint();
 virtual _matrix* mxexp();
+virtual _matrix* mxpade();
 virtual complex  trace();
 
 /*     Function    Output                       Description

@@ -1260,6 +1260,14 @@ _matrix* d_matrix::mxexp()
   return mx;
   }
 
+_matrix* d_matrix::mxpade()
+  {
+  d_matrix* mx = new d_matrix(cols_, rows_);	// If complex, construct new d_matrix
+  for(int i=0; i<rows_; i++)			// Loop over all non_zero elements
+    mx->data[i] = exp(data[i]);			// <i|mx|i> = exp(<i|dmx*|i>)
+  return mx;
+  }
+
 complex d_matrix::trace()
   {
   complex z(0);

@@ -84,6 +84,8 @@ extern "C"
   extern void zgetrf_(const int*, const int*, __CLPK_doublecomplex *, const int*, int*, int*);
   extern void zhetrf_(const char*, const int*, __CLPK_doublecomplex *, const int*, int*, __CLPK_doublecomplex *,
                       int*);
+  extern void zgesv_(const int*, const int*, __CLPK_doublecomplex *, const int*, 
+                       int*, __CLPK_doublecomplex*, const int*, int*);
 }
 #endif
 
@@ -1368,7 +1370,350 @@ _matrix* n_matrix::adjoint()
   return amx;
   }
 
-/*  This curretly uses an eigensystem method for generating the exponential.
+
+/*  Matrix exponential using the Pade method. This is a lot faster than the
+    standard exp() function. Uses the same algorithm as MATLAB expm() and is
+    roughly as fast as the MATLAB implementation. 
+
+    Higham, N. J., The Scaling and Squaring Method for the Matrix Exponential Revisited,
+    SIAM J. Matrix Anal. Appl., 26(4) (2005), pp. 1179-1193.
+    Al-Mohy, A. H. and N. J. Higham, A new scaling and squaring algorithm for the matrix
+    exponential, SIAM J. Matrix Anal. Appl., 31(3) (2009), pp. 970-989.
+
+    This seems to be the fastest method currently.
+
+*/
+
+
+_matrix* n_matrix::mxpade()
+
+{ 
+#ifdef _USING_BLAS_
+
+// Pade needs a linear equation solver so it will only work if the BLAS libraries 
+// are installed. Otherwise we will just use the standard mxexp() which uses diagonalization.
+
+  double L1, n_squ, temp, maxnorm;
+  int k1;
+
+  if(rows_ != cols_)
+  { NMxerror(14,1);			//    Bad rectangular array use
+    NMxfatal(28);			//    Unable to diagonalize
+  }
+//std::cerr << "At Point 01 n_matrix.cc\n";
+  L1=0;
+  for(k1=0;k1<size;++k1)
+  { temp = norm(data[k1]);
+    if(temp > L1)
+      L1=temp;
+  }
+  _matrix *U;
+  _matrix *V;
+  _matrix *temp1;
+  _matrix *temp2;
+  _matrix *temp3;
+  n_squ=0;
+  _matrix* ident = new i_matrix(rows_,rows_);
+  _matrix* A2=this->multiply(this);
+//std::cerr << "At Point 02\n";
+  if(L1 < 1.495585217958292e-2)
+  { const double b[]={120.0, 60.0, 12.0, 1.0};
+//  std::cerr << "At Point 02 - 01\n";
+    temp1 = ident->multiply(b[1]);
+    temp2 = A2->multiply(b[3]);
+    temp3=temp1->add(temp2);
+    delete temp1;
+//  delete temp2;							// Do not delete temp12since b[3]=1 and the same buffer is returned
+    U = this->multiply(temp3);
+    delete temp3;
+//  U = this*(b[3]*A2+b[1]*ident);
+    temp1 = ident->multiply(b[0]);
+    temp2 = A2->multiply(b[2]);
+    V = temp1->add(temp2);
+    delete temp1;
+    delete temp2;
+//  V = b[2]*A2+b[0]*ident;
+  }
+  else
+  { _matrix *A4=A2->multiply(A2);
+    if(L1 < 2.539398330063230e-1)
+    { const double b[]={30240., 15120., 3360., 420., 30., 1.};
+//    std::cerr << "At Point 02 - 02\n";
+      temp1 = ident->multiply(b[1]);
+      temp2 = A2->multiply(b[3]);
+      temp3=temp1->add(temp2);
+      delete temp1;
+      delete temp2;
+      temp1 = A4->multiply(b[5]);
+      temp2=temp1->add(temp3);
+//    delete temp1;							// Do not delete temp1 since b[5]=1 and the same buffer is returned
+      delete temp3;
+      U = this->multiply(temp2);
+      delete temp2;
+//    U = this*(b[5]*A4+b[3]*A2+b[1]*ident);
+      temp1 = ident->multiply(b[0]);
+      temp2 = A2->multiply(b[2]);
+      temp3=temp1->add(temp2);
+      delete temp1;
+      delete temp2;
+      temp1 = A4->multiply(b[4]);
+      V=temp1->add(temp3);
+      delete temp1;
+      delete temp3;
+//    V = b[4]*A4+b[2]*A2+b[0]*ident;
+    }
+    else
+    { _matrix* A6=A4->multiply(A2);
+      if(L1 < 9.504178996162932e-1)
+      { const double b[]={17297280., 8648640., 1995840., 277200., 25200., 1512., 56., 1.};
+//      std::cerr << "At Point 02 - 03\n";
+        temp1 = ident->multiply(b[1]);
+        temp2 = A2->multiply(b[3]);
+        temp3=temp1->add(temp2);
+	delete temp1;
+	delete temp2;
+        temp1 = A4->multiply(b[5]);
+        temp2=temp1->add(temp3);
+	delete temp1;
+	delete temp3;
+        temp1 = A6->multiply(b[7]);
+        temp3=temp1->add(temp2);
+//      delete temp1;							// Do not delete temp1 since b[7]=1 and the same buffer is returned
+	delete temp2;
+        U = this->multiply(temp3);
+	delete temp3;
+//      U = this*(b[7]*A6+b[5]*A4+b[3]*A2+b[1]*ident);
+        temp1 = ident->multiply(b[0]);
+        temp2 = A2->multiply(b[2]);
+        temp3=temp1->add(temp2);
+	delete temp1;
+	delete temp2;
+        temp1 = A4->multiply(b[4]);
+        temp2=temp1->add(temp3);
+	delete temp1;
+	delete temp3;
+        temp1 = A6->multiply(b[6]);
+        V=temp1->add(temp2);
+	delete temp1;
+	delete temp2;
+//      V = b[6]*A6+b[4]*A4+b[2]*A2+b[0]*ident;
+      }
+      else
+      { _matrix* A8=A6->multiply(A2);
+        if(L1 < 2.097847961257068e0)
+        { const double b[]={17643225600., 8821612800., 2075673600., 302702400., 30270240.,
+	                    2162160., 110880., 3960., 90., 1.};
+//        std::cerr << "At Point 02 - 04\n";
+          temp1 = ident->multiply(b[1]);
+          temp2 = A2->multiply(b[3]);
+          temp3=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+          temp1 = A4->multiply(b[5]);
+          temp2=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+          temp1 = A6->multiply(b[7]);
+          temp3=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+          temp1 = A8->multiply(b[9]);
+          temp2=temp1->add(temp3);
+//        delete temp1;								// Do not delete temp1 since b[9]=1 and the same buffer is returned
+	  delete temp3;
+          U = this->multiply(temp2);
+	  delete temp2;
+//        U = this*(b[9]*A8+b[7]*A6+b[5]*A4+b[3]*A2+b[1]*ident);
+          temp1 = ident->multiply(b[0]);
+          temp2 = A2->multiply(b[2]);
+          temp3 = temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+          temp1 = A4->multiply(b[4]);
+          temp2=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+          temp1 = A6->multiply(b[6]);
+          temp3 = temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+          temp1 = A8->multiply(b[8]);
+          V=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+//        V = b[8]*A8+b[6]*A6+b[4]*A4+b[2]*A2+b[0]*ident;
+	}
+        else
+        { maxnorm = 5.371920351148152e0;
+          n_squ = std::max(0, int(std::ceil(std::log(L1/maxnorm))));
+//        std::cerr << "n_squ = " << n_squ << "\n";
+          const double b[]={64764752532480000., 32382376266240000., 7771770303897600.,
+                            1187353796428800., 129060195264000., 10559470521600.,
+                            670442572800., 33522128640., 1323241920., 40840800., 960960.,
+                            16380., 182., 1.};
+//        std::cerr << "At Point 02 - 05\n";
+	  A2=A2->multiply_two(std::pow(2.0,-n_squ*2));
+	  A4=A4->multiply_two(std::pow(2.0,-n_squ*4));
+	  A6=A6->multiply_two(std::pow(2.0,-n_squ*6));
+          temp1 = A2->multiply(b[9]);
+          temp2 = A4->multiply(b[11]);
+          temp3=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+	  temp1 = A6->multiply(b[13]);
+          temp2=temp1->add(temp3);
+//        delete temp1;                                           // Do not delete temp1 since b[13]=1 and the same buffer is returned!
+	  delete temp3;
+          temp3 = A6->multiply(temp2);
+          delete temp2;
+	  temp1 = ident->multiply(b[1]);
+          temp2=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+	  temp1 = A2->multiply(b[3]);
+          temp3=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+	  temp1 = A4->multiply(b[5]);
+          temp2=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+	  temp1 = A6->multiply(b[7]);
+          temp3=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+          U = this->multiply(temp3);
+	  delete temp3;
+	  U=U->multiply_two(std::pow(2.0,-n_squ));
+//        U = mx1*(A6*(b[13]*A6+b[11]*A4+b[9]*A2)+b[7]*A6+b[5]*A4+b[3]*A2+b[1]*ident);
+          temp1 = A2->multiply(b[8]);
+          temp2 = A4->multiply(b[10]);
+          temp3=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+	  temp1 = A6->multiply(b[12]);
+          temp2=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+          temp3 = A6->multiply(temp2);
+	  delete temp2;
+	  temp1 = ident->multiply(b[0]);
+          temp2=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+	  temp1 = A2->multiply(b[2]);
+          temp3=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+	  temp1 = A4->multiply(b[4]);
+          temp2=temp1->add(temp3);
+	  delete temp1;
+	  delete temp3;
+	  temp1 = A6->multiply(b[6]);
+          V=temp1->add(temp2);
+	  delete temp1;
+	  delete temp2;
+//        V = A6*(b[12]*A6+b[10]*A4+b[8]*A2)+b[6]*A6+b[4]*A4+b[2]*A2+b[0]*ident;
+        }
+	delete A8;
+      }
+     delete A6;
+    }
+    delete A4;
+  }
+  delete A2;
+//std::cerr << "At Point 03\n";
+//std::cerr << "This is U \n";
+//U->print(std::cerr,MxPrDefs);
+//std::cerr << "This is V \n";
+//V->print(std::cerr,MxPrDefs);
+  _matrix* P = U->add(V);
+  _matrix* Q = V->subtract(U);
+  n_matrix* P2 = (n_matrix *) P;
+  n_matrix* Q2 = (n_matrix *) Q;
+//std::cerr << "This is P \n";
+//P->print(std::cerr,MxPrDefs);
+//std::cerr << "This is Q \n";
+//Q->print(std::cerr,MxPrDefs);
+#ifdef _USING_SUNPERFLIB_
+  int N    = rows_;
+  int NHRS = rows_;
+  int LDA  = rows_;
+  int *ipiv = new int[rows_];
+  int LDB   = rows_;
+  int info  = -5555;
+  zgesv(N, NHRS, (doublecomplex *) Q2->data, LDA, ipiv, (doublecomplex *) P2->data, LDB, &info);
+#endif
+#ifdef _USING_LAPACK_
+#if defined(__LP64__) /* this is needed on MacOS CLAPACK to make types match*/
+  int N    = rows_;
+  int NHRS = rows_;
+  int LDA  = rows_;
+  int *ipiv = new int[rows_];
+  int LDB   = rows_;
+  int info  = -5555;
+#else
+  long int N    = rows_;
+  long int NHRS = rows_;
+  long int LDA  = rows_;
+  long int *ipiv = new long int[rows_];
+  long int LDB   = rows_;
+  long int info  = -5555;
+#endif
+//std::cerr << "At Point 04\n";
+  zgesv_(&N, &NHRS, (__CLPK_doublecomplex *) Q2->data, &LDA, ipiv, (__CLPK_doublecomplex *) P2->data, &LDB, &info);
+#endif
+  if(info == 0)
+  { // everything looks good
+  }
+  else
+  { NMxfatal(28);			//    Unable to diagonalize
+  }
+//std::cerr << "At Point 05\n";
+  _matrix* R = P2;
+  delete [] ipiv;
+  delete ident;
+//std::cerr << "At Point 06\n";
+  for(k1=0;k1<n_squ;++k1)
+  { temp1 = R->multiply(R);
+    delete R;
+    R=temp1;
+  }
+  delete U;
+  delete V;
+  delete Q2;
+//std::cerr << "At Point 07\n";
+  return(R);
+
+#else          // BLAS NOT available
+
+// Without BLAS, we just use the standard mxexp() function here
+// This will be much slower. But Pade needs a linear equation solver.
+  
+  _matrix* dmx;					// For eigenvalues
+  _matrix* emx;					// For eigenvectors
+  diag(dmx, emx);				// Diagonalize mx to dmx & emx 
+  complex *d00 = ((d_matrix*)dmx)->data;	// Start of dmx: d00 = <0|dmx|0>
+  complex *dii, *dend = d00 + cols_;		// Indexing on dmx diagonal
+  for(dii=d00; dii<dend; dii++)			// Effective loop over i
+    (*dii) = exp(*dii);				// Set <i|dmx|i> to exp(<i|dmx|i>
+//  _matrix* pdt1  = dmx->multiply(emx);		// Perform exp(D)*E
+//  _matrix* emxi  = emx->inv();			// Get inverse of emx
+//  _matrix* expmx = emxi->multiply(pdt1);	// Perform inv(E)*exp(D)*E
+
+  _matrix* emxi  = emx->inv();			// Get inverse of emx
+  _matrix* pdt1  = dmx->multiply(emxi);
+  _matrix* expmx = emx->multiply(pdt1);
+  delete dmx;                                   // Clean up the dmx matrix
+  delete emx;                                   // Clean up the emx matrix
+  delete pdt1;					// Clean up the pdt1 matrix
+  delete emxi;					// Clean up the emxi matrix
+  return expmx;
+#endif
+}
+
+
+/*  This currently uses an eigensystem method for generating the exponential.
 
                    exp(A) = exp[E*D*inv(E)] = E*exp(D)*inv(E)
 
@@ -2311,14 +2656,14 @@ std::vector<std::string> n_matrix::printStrings(const MxPrint& PFlgs) const
     if(is_real())           ptype = 1;          // Real elements output
     else if(is_imaginary()) ptype = 2;          // Imag elements output
     }
-  int    elen;                                  // A single element length
-  switch(ptype)                                 // Get the element length
-    {                                           // from class complex. This 
-    default:                                    // depends on the output
-    case 0: elen = complex::zlength(); break;   // format
-    case 1:
-    case 2: elen = complex::dlength(); break;
-    }
+//int    elen;                                  // A single element length
+//switch(ptype)                                 // Get the element length
+//  {                                           // from class complex. This 
+//  default:                                    // depends on the output
+//  case 0: elen = complex::zlength(); break;   // format
+//  case 1:
+//  case 2: elen = complex::dlength(); break;
+//  }
   std::string pline;
   std::string efmt = complex::dformat();        // Real/Imag element format
   int i,j,pos;

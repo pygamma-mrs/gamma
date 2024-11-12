@@ -891,7 +891,8 @@ matrix& matrix::operator /= (double d)	// Implements this /= d
           conj	           mx1 = mx* 	  conjugate <i|mx1|j>=<i|mx*|j>
         transpose 	   mx1 = mxt	  transpose <i|mx1|j>=<j|mx|i>
         adjoint	           mx1 = mxt*	  adjoint   <i|mx1|j>=<j|mx*|i>
-	 exp               mx1 = exp(mx)  exponentiation 
+	 exp               mx1 = exp(mx)  exponentiation by diagonalization
+	 expm              mx1 = expm(mx) exponentiation by Pade approximation
 	 trace		     z = Tr{mx}	  trace     z = sum <i|mx|i>         */
 
 //matrix operator- (const matrix& mx) { return matrix(mx.m->negate());    }
@@ -909,6 +910,7 @@ matrix  matrix::conj()       const  { return matrix(m->conjugate()); }
 matrix  matrix::transpose()  const  { return matrix(m->transpose()); }
 matrix  matrix::adjoint()    const  { return matrix(m->adjoint());   }
 matrix  matrix::exp()        const  { return matrix(m->mxexp());     }
+matrix  matrix::expm()       const  { return matrix(m->mxpade());     }
 complex matrix::trace()      const  { return        m->trace();      }
 
 /*     Function    Output                       Description
