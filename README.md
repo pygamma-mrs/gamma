@@ -9,21 +9,27 @@
 
 With GAMMA it is possible to model a large variety of nuclear magnetic resonance phenomena: This includes the ability to easily represent and simulate spin systems, density operators, Hamiltonians, detection operators, and the effect of various rf pulses - both ideal pulses and more realistic examples characterized by complex waveforms - by using (and extending) the C++ classes provided by GAMMA. Additional built in components of GAMMA are represented as C++ classes, include propagators, superoperators, Liouvillians, transition tables, Bloch equations, spin exchange, quadrupolar, dipolar and Hyperfine interactions, as well as many others.
 
-GAMMA was originally written by Scott A. Smith and Tilo Levante under the guideance of B.H. Meier and R.R. Ernst at the ETH in Zürich. The reference to the original paper is given here:
-
-    "Computer Simulations in Magnetic Resonance. An Object Oriented Programming Approach", S.A. Smith, T.O. Levante, B.H. Meier, and R.R. Ernst, Journal of Magnetic Resonance, 106a, 75-105, (1994). 
-
-It has since been modifed and updated with contributions from a number of individuals.	 
-
 ## What is PyGAMMA
 
 PyGAMMA is a library that exposes the GAMMA public intefaces within Python. It provides the functionality of GAMMA within the interactive and scriptable Python environment. 
 
 Using PyGAMMA, users may access GAMMA commands interactively from a Python command prompt, or create complex Python programs. The Object Oriented design of GAMMA is not sacrificed in PyGAMMA. 
 
+## Citation
+
+If you publish material that makes use of GAMMA, please cite the following publication:
+
+Smith SA, Levante TO, Meier BH, and Ernst RR. Computer Simulations in Magnetic Resonance. An Object Oriented Programming Approach. J Magn. Res. 1994; 106a:75-105.
+
+If you publish material that makes use of PyGAMMA, please cite the following publication:
+
+Soher B, Semanchuk P, Todd D, Ji X, Deelchand D, Joers J, Oz G and Young K. Vespa: Integrated applications for RF pulse design, spectral simulation and MRS data analysis. Magn Reson Med. 2023;1-16. epub doi: 10.1002/mrm.29686
+
+GAMMA was originally written by Scott A. Smith and Tilo Levante under the guideance of B.H. Meier and R.R. Ernst at the ETH in Zürich. It has since been modifed and updated with contributions from a number of individuals. The expansion of PyGAMMA using SWIG was accomplished as part of the [Vespa](https://github.com/vespa-mrs/vespa) project.	 
+
 ## Licensing
 
-For licensing information see the LICENSE file in this directory.
+BSD, specifically a "three-clause" BSD license
 
 ## Platforms
 
