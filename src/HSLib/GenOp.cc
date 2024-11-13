@@ -1165,13 +1165,14 @@ complex gen_op::proj(const gen_op &Op2, int normf) const
   }
 
 
+	// Input		Op   : General operator (this)
+        // Return		int  : Op Liouville space dimension
+
 int gen_op::dim()    const { return (!WBR)?0:WBR->RepMx.cols(); }
 int gen_op::HS()     const { return (!WBR)?0:WBR->RepMx.cols(); }
 int gen_op::LS()     const { return (!WBR)?0:WBR->RepBs.dim_LS(); }
 int gen_op::dim_LS() const { return (!WBR)?0:WBR->RepBs.dim_LS(); }
 
-	// Input		Op   : General operator (this)
-        // Return		int  : Op Liouville space dimension
 
 
 	// Input		Op1   : General operator (this)
@@ -1228,6 +1229,52 @@ gen_op gen_op::exp(const complex& t, double cutoff) const
   return ExpOp;
   }
  
+	// Input		Op   : General operator (this)
+        // Return		int  : Op Liouville space dimension
+
+
+	// Input		Op1   : General operator (this)
+        // Return		Op    : exponential of Op1
+	//				Op = exp(Op1)
+        // Note			      : Computed in same base as Op1
+        // Note			      : Returns I matrix for Null Op
+
+gen_op gen_op::expm() const
+  {
+  int hs = dim();				// Operator Hilbert space
+  if(!WBR)					// If we have no reps then
+    {						// return an identity matrix
+    if(!hs) GenOpfatality(3, "exp"); 		// or Op exponential error
+    return gen_op(matrix(hs,hs,i_matrix_type)); // if there is no dimension
+    }
+  gen_op ExpOp(*this); 				// Copy Op in diagonal form
+  matrix mx1 = this->get_mx();
+  ExpOp.put_mx(mx1.expm());
+  return ExpOp;
+  }     
+
+
+
+        // Input                Op    : Operator (this)
+        //                      t     : Exponential factor
+        //                      cutoff: Exponential factor roundoff
+        // Return               ExpOp : Exponential of Op
+        //                              ExpOp = exp(t*Op)
+        // Note                       : Exponential output in same base as Op
+        // Note                       : Value of t is considered 0 if
+        //                              it's magnituded is less than cutoff
+
+gen_op gen_op::expm(const complex& t, double cutoff) const
+  {
+  int hs = dim();				// Operator Hilbert space
+  if(!WBR && !hs) GenOpfatality(3,"exp"); 	// Op exponential error
+  if(!WBR || norm(t) < fabs(cutoff))
+    return gen_op(matrix(hs, hs, i_matrix_type));
+  gen_op ExpOp(*this); 
+  matrix mx1 = this->get_mx()*t;
+  ExpOp.put_mx(mx1.expm());
+  return ExpOp;
+  }
  
 
         // Input                Op      : Operator (this)
@@ -1682,9 +1729,14 @@ void gen_op::status(int pf) const
       case i_matrix_type:
       case d_matrix_type:
       case n_matrix_type:
-        if((REP->RepMx).test_hermitian()) std::cout << ", Hermitian"; 
-        else                              std::cout << ", Non-Hermitian"; break;
-      default:                            std::cout << ", Non-Hermitian"; break;
+        if((REP->RepMx).test_hermitian())
+	  std::cout << ", Hermitian"; 
+        else                              
+	  std::cout << ", Non-Hermitian";
+	break;
+      default:                            
+	std::cout << ", Non-Hermitian";
+	break;
       }
 
     std::cout << "\n\t     - basis  = " << (REP->RepBs).refs() << " refs";
@@ -1702,9 +1754,14 @@ void gen_op::status(int pf) const
       case i_matrix_type:
       case d_matrix_type:
       case n_matrix_type:
-        if((REP->RepMx).test_hermitian()) std::cout << ", Hermitian";
-        else                              std::cout << ", Non-Hermitian"; break;
-      default:                            std::cout << ", Non-Hermitian"; break;
+        if((REP->RepMx).test_hermitian())
+	  std::cout << ", Hermitian";
+        else                             
+	  std::cout << ", Non-Hermitian";
+	break;
+      default:                           
+	std::cout << ", Non-Hermitian";
+	break;
       }
     REP++;
     item++;
@@ -1904,8 +1961,7 @@ void gen_op::SetLimits(int limit) const
   std::cout << "\n\tLimiting No. Of ";
   if(OpName.length()) std::cout << OpName << " ";
   std::cout << "Operator Representations";
-  std::cout << "\n\tCurrent Representations: " 
-            << size();
+  std::cout << "\n\tCurrent Representations: " << size();
   std::cout << ", Maximum Allowed: " << limit; 
 # endif
   gen_op* OpTmp = const_cast<gen_op*>(this);	// Cast away const (mutable!)

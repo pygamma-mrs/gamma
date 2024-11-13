@@ -429,6 +429,24 @@ MSVCDLL gen_op exp(const complex& t, double cutoff=1.e-12) const;
         // Note                       : Value of t is considered 0 if
         //                              it's magnituded is less than cutoff
 
+MSVCDLL gen_op expm() const;
+
+	// Input		Op1  : General operator (this)
+        // Return		Op   : exponential of Op1
+	//			       Op = exp(Op1) using pade
+        // Note			     : Computed in the same base as Op1
+
+
+MSVCDLL gen_op expm(const complex& t, double cutoff=1.e-12) const;
+
+        // Input                Op    : Operator (this)
+        //                      t     : Exponential factor
+        //                      cutoff: Exponential factor roundoff
+        // Return               ExpOp : Exponential of Op
+        //                              ExpOp = exp(t*Op) using Pade
+        // Note                       : Exponential output in same base as Op
+        // Note                       : Value of t is considered 0 if
+        //                              it's magnituded is less than cutoff
 
 MSVCDLL gen_op Pow(int power) const;
 
