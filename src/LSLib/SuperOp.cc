@@ -1422,7 +1422,7 @@ super_op expm(const super_op& LOp1, const complex& t)
         // Note			      : Computed in EBR of LOp1
 
   {
-  super_op LOp(matrix(LOp1.LSp, LOp1.LSp, d_matrix_type));
+  super_op LOp = LOp1;
   if(LOp.HSp) 				// Check for NULL LOp
     {
     if(t != complex0)
@@ -1436,8 +1436,6 @@ super_op expm(const super_op& LOp1, const complex& t)
       matrix mx(LOp1.LSp, LOp1.LSp, i_matrix_type);	// LOp is the identity superoperator
       LOp.mx = mx;
       }
-    LOp.Hbs = LOp1.Hbs;			// LOp Hilbert space basis same as LOp1's
-    LOp.Lbs = LOp1.Lbs;			// LOp Liouville space basis same as LOp1's
     }
   else
     {
