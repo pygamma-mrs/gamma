@@ -340,6 +340,7 @@ virtual _matrix* IM();
 virtual _matrix* conjugate();
 virtual _matrix* transpose();
 virtual _matrix* mxexp();
+virtual _matrix* mxpade();
 virtual _matrix* adjoint();
 virtual complex  trace();
 

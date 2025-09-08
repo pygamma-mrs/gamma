@@ -1327,6 +1327,124 @@ super_op exp(const super_op& LOp1, const complex& t)
   return LOp;
   }
 
+// ----------------------------------------------------------------------------
+//                 Exponential Superoperators using Pade Method
+// ----------------------------------------------------------------------------
+
+
+	// Input		LOp   : Superoperator (this)
+        // Return		ExpLOp: Exponential of LOp
+	//				ExpLOp = exp(LOp) (Pade method)
+        // Note			      : Exponential output in same base as LOp
+
+super_op super_op::expm() const
+  {
+  if(!HSp)				// Check for NULL LOp
+    {
+    LOperror(5, "exp", 1);		// Error during LOp exp function
+    LOpfatal(7);			// Accessing Null LOp
+    }
+  super_op ExpLOp(*this);		// Copy LOp in its current base
+  matrix mx1 = this->mx;
+  
+  ExpLOp.mx = mx1.expm();
+  
+  return ExpLOp;
+  }
+
+
+super_op super_op::expm(const complex& t, double cutoff) const
+
+        // Input                LOp   : Superoperator (this)
+        //                      t     : Exponential factor
+        //                      cutoff: Exponential factor roundoff
+        // Return               ExpLOp: Exponential of LOp
+        //                              ExpLOp = exp(t*LOp)
+        // Note                       : Exponential output in EBR of LOp
+        // Note                       : L0p's EBR is generated herein
+        // Note                       : Value of t is considered 0 if
+        //                              it's magnituded is less than cutoff
+
+  {
+  if(!HSp)				// Check for NULL LOp
+    {
+    LOperror(5, "exp", 1);		// Error during LOp exp function
+    LOpfatal(7);			// Accessing NULL Lop
+    }
+  super_op ExpLOp(*this);		// Copy LOp in its current base
+  if(norm(t) < fabs(cutoff))
+    {
+    matrix mx(LSp, LSp, i_matrix_type);	// ExpLOp is the identity superop
+    ExpLOp.mx = mx;
+    }
+  else
+    {
+    matrix mx1 = this->mx*t;
+    ExpLOp.mx = mx1.expm();
+    }
+  return ExpLOp;
+  }
+
+  
+
+
+	// Input		LOp1  : Superoperator
+        // Return		LOp   : Exponential of LOp1
+	//				LOp = exp(LOp1)
+        // Note			      : Computed in EBR of LOp1
+        // Note			      : Superoperator output in EBR of LOp1
+
+super_op expm(const super_op& LOp1)
+  {
+  super_op LOp = LOp1;
+  if(LOp1.HSp)				// Check for NULL LOp
+    {
+    matrix m1 = LOp.get_mx();
+    LOp.put_mx(m1.expm());
+    return LOp;
+    }
+  else
+    {
+    LOp1.LOperror(5, "exp", 1);	// Error during LOp exp function
+    LOp1.LOpfatal(7);		// Accessing Null LOp
+    }
+  return LOp;
+  }
+
+  
+super_op expm(const super_op& LOp1, const complex& t)
+//return LOp(matrix(LOp1.LSp, LOp1.LSp, d_matrix_type));
+
+	// Input		LOp1  : Superoperator
+	//			t     : A time
+        // Return		LOp   : Exponential of LOp1
+	//				LOp = exp(LOp1*t)
+        // Note			      : Computed in EBR of LOp1
+
+  {
+  super_op LOp = LOp1;
+  if(LOp.HSp) 				// Check for NULL LOp
+    {
+    if(t != complex0)
+      {
+      matrix m1 = LOp.get_mx()*t;
+      LOp.put_mx(m1.expm());
+      return LOp;
+      }
+    else
+      {
+      matrix mx(LOp1.LSp, LOp1.LSp, i_matrix_type);	// LOp is the identity superoperator
+      LOp.mx = mx;
+      }
+    }
+  else
+    {
+    LOp1.LOperror(5, "exp", 1);	// Error during LOp exp function
+    LOp1.LOpfatal(7);		// Accessing Null LOp
+    }
+  return LOp;
+  }
+
 
 // ----------------------------------------------------------------------------
 //                      Superoperators Taken To A Power

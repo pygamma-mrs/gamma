@@ -653,6 +653,32 @@ floq_op floq_op::exp()
   return ExpFOp;
   }
 
+        // Input		FOp	: Floquet operator
+        // Return		ExpFOp	: Exponential of FOp using Pade
+	//				   ExpFOp = exp(FOp)
+
+floq_op expm(const floq_op& FOp)
+  {
+  floq_op ExpFOp(FOp.N, FOp.hs, FOp.Om);	// Allocate return operator
+  ExpFOp.gen_op::operator= (FOp.gen_op::expm());	// Set exponential array
+  return ExpFOp;				// Return exponentiated FOp
+  }
+
+
+floq_op floq_op::expm()
+
+        // Input                FlOp    : Floquet operator (*this)
+        // Return               ExpFlOp : Exponential of Op1 using Pade
+        //                                   Op = exp(Op1)
+	// sosi				: Be nice to set this up as in
+	//				  class gen_op.....
+
+  {
+  floq_op ExpFOp(N, hs, Om);	// Allocate return operator
+  ExpFOp=*this;
+  ExpFOp.gen_op::operator= (ExpFOp.gen_op::expm());	// Set exponential array
+  return ExpFOp;
+  }
 
 floq_op prop(floq_op& FH, double time)
 

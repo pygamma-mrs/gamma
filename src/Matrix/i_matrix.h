@@ -296,6 +296,7 @@ virtual        _matrix* conjugate();		// Return is this
 virtual inline _matrix* transpose();		// Return is this
 virtual inline _matrix* adjoint();		// Return is this
 virtual inline _matrix* mxexp();		// Return is this
+virtual inline _matrix* mxpade();		// Return is this
 virtual inline complex  trace();		// Return is size
 
 /*     Function    Output                       Description

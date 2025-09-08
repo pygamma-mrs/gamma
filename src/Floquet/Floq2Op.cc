@@ -805,6 +805,18 @@ floq2_op exp(floq2_op &Op1)
   return EXpOp1;
   }
 
+
+	// Input		Op1   : Floquet operator
+        // Return		Op    : exponential of Op1 using Pade
+	//				Op = exp(Op1)
+
+floq2_op expm(floq2_op &Op1)
+  {  
+  floq2_op EXpOp1(Op1.N1, Op1.N2, Op1.hs, Op1._omega1, Op1._omega2);
+   EXpOp1.gen_op::operator= (Op1.gen_op::expm());  // calculate exp(Op1)
+  return EXpOp1;
+  }
+
 /*
 
 floq2_op prop (floq2_op &ham , double &time)

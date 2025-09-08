@@ -243,12 +243,18 @@ MSVCDLL        void     operator /= (      double   d);
         // Output          gen_op    : Operator containing trace(s) over    
         //                             Photon space
 
-MSVCDLL friend floq2_op exp (floq2_op &Op1);
+MSVCDLL friend floq2_op exp(floq2_op &Op1);
 	
         // Input		Op1  : Floquet operator
         // Return		Op   : exponential of Op1
 	//			       Op = exp(Op1)
         // Note			     : Computed in EBR of Op1
+
+MSVCDLL friend floq2_op expm(floq2_op &Op1);
+	
+        // Input		Op1  : Floquet operator
+        // Return		Op   : exponential of Op1 using Pade
+	//			       Op = exp(Op1)
 
 /*  friend floq2_op prop (floq2_op &FLOQHAM , double &time);
  

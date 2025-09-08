@@ -398,6 +398,41 @@ MSVCDLL friend super_op exp(const super_op& LOp1, const complex& t);
 	//				LOp = exp(LOp1*t)
         // Note			      : Computed in EBR of LOp1
   
+MSVCDLL super_op expm() const;
+
+        // Input                LOp   : Superoperator (this)
+        // Return               ExpLOp: Exponential of LOp
+        //                              ExpLOp = exp(LOp) (Pade method)
+        // Note                       : Exponential output in same base as LOp
+
+
+MSVCDLL super_op expm(const complex& t, double cutoff=1.e-12) const;
+
+        // Input                LOp   : Superoperator (this)
+	//			t     : Exponential factor
+	//			cutoff: Exponential factor roundoff
+        // Return               ExpLOp: Exponential of LOp
+        //                              ExpLOp = exp(t*LOp) (Pade method)
+        // Note                       : Exponential output in same base as LOp
+	// Note			      : Value of t is considered 0 if
+	//				it's magnituded is less than cutoff
+
+  
+MSVCDLL friend super_op expm(const super_op& LOp1);
+
+	// Input		LOp1  : Superoperator
+        // Return		LOp   : Exponential of LOp1
+	//				LOp = exp(LOp1) (Pade method)
+        // Note			      : Computed in same base as LOp1
+
+  
+MSVCDLL friend super_op expm(const super_op& LOp1, const complex& t);
+
+	// Input		LOp1  : Superoperator
+        // Return		LOp   : Exponential of LOp1
+	//				LOp = exp(LOp1*t) (Pade method)
+        // Note			      : Computed in same base as LOp1
+  
 
 MSVCDLL friend super_op pow(const super_op& LOp, int power);
 

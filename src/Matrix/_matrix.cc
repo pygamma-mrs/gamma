@@ -376,7 +376,8 @@ _matrix* _matrix::IM()        {_MxFatal(5, "Imaginary");         return this; }
 _matrix* _matrix::conjugate() {_MxFatal(5, "Complex Conjugate"); return this; }
 _matrix* _matrix::transpose() {_MxFatal(5, "Transpose");         return this; }
 _matrix* _matrix::adjoint()   {_MxFatal(5, "Adjoint");           return this; }
-_matrix* _matrix::mxexp()     {_MxFatal(5, "Exponential");       return this; }
+_matrix* _matrix::mxexp()     {_MxFatal(5, "Exponential Diag");  return this; }
+_matrix* _matrix::mxpade()    {_MxFatal(5, "Exponential Pade");  return this; }
 complex  _matrix::trace()     {_MxFatal(5, "Trace");         return complex0; }
 
 _matrix* _matrix::swaprows(int i,int j) {_MxFatal(5,"swaprows"); return this;}

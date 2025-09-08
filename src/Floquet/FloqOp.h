@@ -268,6 +268,18 @@ MSVCDLL floq_op exp();
         // Return               ExpFlOp : Exponential of Op1
         //                                   Op = exp(Op1)
 
+MSVCDLL friend floq_op expm(const floq_op& Op1);
+	
+        // Input		Op1  : Floquet operator
+        // Return		Op   : exponential of Op1 using Pade
+	//			       Op = exp(Op1)
+
+MSVCDLL floq_op expm();
+
+        // Input                FlOp    : Floquet operator (*this)
+        // Return               ExpFlOp : Exponential of Op1 using Pade
+        //                                   Op = exp(Op1)
+
 MSVCDLL friend floq_op prop(floq_op& FLOQHAM, double time);
  
 	// Input		Op1   : Floquet Hamiltonian
