@@ -60,7 +60,7 @@ AUTHOR = "Dr. Scott A. Smith and Dr. Tilo Levante"
 AUTHOR_EMAIL = "no_known_address@example.com"
 MAINTAINER = "Brian Soher"
 MAINTAINER_EMAIL = "bsoher@briansoher.com"
-URL = "https://scion.duhs.duke.edu/vespa/gamma"
+URL = "https://pygamma-mrs.github.io/gamma.io/"
 # http://pypi.python.org/pypi?:action=list_classifiers
 CLASSIFIERS = ['Development Status :: 5 - Production/Stable',
                'Intended Audience :: Science/Research',
