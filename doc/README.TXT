@@ -25,5 +25,4 @@ The PDFs in this directory are more or less the same
 as those in the gamma_docs Subversion repository.
 
 For the latest information on GAMMA, go to this link:
-http://scion.duhs.duke.edu/vespa/gamma
-
+https://pygamma-mrs.github.io/gamma.io/
