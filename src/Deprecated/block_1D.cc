@@ -41,7 +41,7 @@
 #include <Basics/Gutils.h>		// Include GAMMA errors
 #include <assert.h>
 #include <iostream>
-using namespace std;
+//using namespace std;
  
 // ----------------------------------------------------------------------------
 // --------------------------- PRIVATE FUNCTIONS ------------------------------

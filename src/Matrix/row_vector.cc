@@ -62,7 +62,9 @@
                 (9)                     Problems During Construction
                 default                 Unknown Error                        */
 
-using namespace std;
+
+//using namesped std; causes multiple ambuigity errors therefore removed
+//using namespace std;
 
 // Added this to handle the naming ambiguity of "exp" 
 // from inside the row_vector class. DCT 10/05/09.
@@ -1000,13 +1002,13 @@ std::istream& operator >> (std::istream& istr, row_vector& rvec)
  * modified copy of the string is returned instead.
  */
 
-string row_vector::trim_left (const string& in)
+std::string row_vector::trim_left (const std::string& in)
 {
   int n = 0;
-  string::const_iterator p = in.begin();
+  std::string::const_iterator p = in.begin();
 
   if (in.length() == 0) {
-    string out = "";
+    std::string out = "";
     return out;
   }
 
@@ -1017,7 +1019,7 @@ string row_vector::trim_left (const string& in)
       break;
     p++;
   }
-  string out (in, n, in.length());
+  std::string out (in, n, in.length());
   return out;
 }
 
@@ -1026,10 +1028,10 @@ string row_vector::trim_left (const string& in)
  * @in: string to be processed. This string is not modified; a
  * modified copy of the string is returned instead.
  */
-string row_vector::trim_right (const string& in)
+std::string row_vector::trim_right (const std::string& in)
 {
   int n = 0;
-  string::const_reverse_iterator p = in.rbegin();
+  std::string::const_reverse_iterator p = in.rbegin();
 
   while (p != in.rend()) {
     if (isspace (*p))
@@ -1038,7 +1040,7 @@ string row_vector::trim_right (const string& in)
       break;
     p++;
   }
-  string out (in, 0, in.length() - n);
+  std::string out (in, 0, in.length() - n);
   return out;
 }
 
@@ -1046,14 +1048,14 @@ string row_vector::trim_right (const string& in)
  * trim_all - remove whitespace from left and right sides of a string
  * @in: the string to be processed
  */
-string row_vector::trim_all (const string& in)
+std::string row_vector::trim_all (const std::string& in)
 {
   if (in.length() == 0) {
-    string out = "";
+    std::string out = "";
     return out;
   }
 
-  string out = trim_left (in);
+  std::string out = trim_left (in);
   out = trim_right (out);
   return out;
 }
@@ -1080,10 +1082,10 @@ int row_vector::isws (const char c)
  * are removed in the returned copy. squeeze() also removes leading
  * whitespace from @line.
  */
-string row_vector::squeeze (string line)
+std::string row_vector::squeeze (std::string line)
 {
   int nwhite = 0;
-  string squeezed, whchars = " \t";
+  std::string squeezed, whchars = " \t";
 
   if (!line.length())
     return "";
@@ -1114,11 +1116,11 @@ string row_vector::squeeze (string line)
  * @field: a vector of strings to hold the tokenized version of @s.
  * Return Value: The number of fields in @s.
  */
-int row_vector::split (string s, char sep, vector<string>& field)
+int row_vector::split (std::string s, char sep, std::vector<std::string>& field)
 {
   unsigned int i, nfield;
   unsigned int j = 0;
-  string fld;
+  std::string fld;
 
   if ((i = s.length()) == 0)
     return 0;
@@ -1132,7 +1134,7 @@ int row_vector::split (string s, char sep, vector<string>& field)
       j = s.find_first_of( sep, i );
       if (j > s.length())
 	    j = s.length();
-      fld = string( s, i, j-i );
+      fld = std::string( s, i, j-i );
     }
     if (nfield >= field.size())
       field.push_back( fld );
@@ -1169,9 +1171,9 @@ int row_vector::split (string s, char sep, vector<string>& field)
  *******************************************************************/
 
 //int ReadPulse (const char *filename, int PulseFmt, row_vector& v)
-MSVCDLL row_vector row_vector::read_pulse (const string filename, const int PulseFmt)
+MSVCDLL row_vector row_vector::read_pulse (const std::string filename, const int PulseFmt)
 {
-  ifstream fin (filename.c_str(), ios_base::in);
+  std::ifstream fin (filename.c_str(), std::ios_base::in);
   if (!fin) {
     //eprintf ("could not open pulse file %s", filename);
   }
@@ -1213,12 +1215,12 @@ MSVCDLL row_vector row_vector::read_pulse (const string filename, const int Puls
  *
  * @fin: file stream of the pulse file
 */
-row_vector row_vector::ReadSiemens (ifstream& fin)
+row_vector row_vector::ReadSiemens (std::ifstream& fin)
 {
-  vector<string> fields;
-  vector<double> pts;
+  std::vector<std::string> fields;
+  std::vector<double> pts;
   int i = 0, count = 0, in_data = 0;
-  string line;
+  std::string line;
 
   while (getline (fin, line)) 
   {
@@ -1270,12 +1272,12 @@ row_vector row_vector::ReadSiemens (ifstream& fin)
  * ReadSiemens_Nohdr - read and process a Siemens pulse file without header
  * @fin: file stream of the open pulse file
  */
-row_vector row_vector::ReadSiemens_Nohdr (ifstream& fin)
+row_vector row_vector::ReadSiemens_Nohdr (std::ifstream& fin)
 {
   int pos, numpts, count = 0;
-  string line, cooked;
-  vector<string> field;
-  vector<double> allpts;
+  std::string line, cooked;
+  std::vector<std::string> field;
+  std::vector<double> allpts;
 
   while (fin) {
     getline (fin, line);
@@ -1286,7 +1288,7 @@ row_vector row_vector::ReadSiemens_Nohdr (ifstream& fin)
     pos    = row_vector::split (cooked, ' ', field);
 
     for (unsigned int i = 0; i < field.size(); i++) {
-      string snum = field[i];
+      std::string snum = field[i];
       const char* cptr = snum.data();
       /* No way to know where the amplitudes end and the
        * phases begin.  */
@@ -1298,7 +1300,7 @@ row_vector row_vector::ReadSiemens_Nohdr (ifstream& fin)
   }
 
   numpts = count / 2;
-  vector<double> amps (numpts), phases (numpts);
+  std::vector<double> amps (numpts), phases (numpts);
   row_vector rvec (numpts);
   for (int i = 0; i < numpts; i++) {
     amps[i]   = allpts[i*2];			//bjs-May2002
@@ -1317,14 +1319,14 @@ row_vector row_vector::ReadSiemens_Nohdr (ifstream& fin)
  * ReadSVS - Read in and process a complete SVS file
  * @fin - file stream of the open pulse file
  */
-row_vector row_vector::ReadSVS (ifstream& fin)
+row_vector row_vector::ReadSVS (std::ifstream& fin)
 {
   int pos, numpts = 0, in_data = 0;
-  string line, cooked;
+  std::string line, cooked;
   double apt;
-  vector<double> pts;
-  vector<string> field;
-  vector<double> amps, phases;
+  std::vector<double> pts;
+  std::vector<std::string> field;
+  std::vector<double> amps, phases;
 
   const char* SIEM_HDR = "Num_Points:";
   const char* SIEM_VAL = "Entry_Values:";
@@ -1341,14 +1343,14 @@ row_vector row_vector::ReadSVS (ifstream& fin)
     if (cooked.find (SIEM_HDR) < cooked.length()) {
       /* Extract number of points in file  */
       pos = row_vector::split (cooked, ' ', field);
-      string snum = field[1];
+      std::string snum = field[1];
       const char* cptr = snum.data();
       numpts = atoi (cptr);
     }
 
     if (cooked.find (SIEM_VAL) < cooked.length()) {
       pos = row_vector::split (cooked, ' ', field);
-      /* Excise SIEM_VAL from cooked string.  */
+      /* Excise SIEM_VAL from cooked std::string.  */
       pos = cooked.find_first_of (" ");
       cooked = cooked.substr (pos + 1);
       /* Now erase the contents of field, or else they accumulate.  */
@@ -1377,12 +1379,12 @@ row_vector row_vector::ReadSVS (ifstream& fin)
  * ReadPlain_ASCII - read and process a Plain ASCII pulse file (Ampl(Hz),Phase(degr))
  * @fin: file stream of the open pulse file
  */
-row_vector row_vector::Read_Plain_ASCII (ifstream& fin)
+row_vector row_vector::Read_Plain_ASCII (std::ifstream& fin)
 {
   int pos, numpts, count = 0;
-  string line, cooked;
-  vector<string> field;
-  vector<double> allpts;
+  std::string line, cooked;
+  std::vector<std::string> field;
+  std::vector<double> allpts;
 
   while (fin) {
     getline (fin, line);
@@ -1393,7 +1395,7 @@ row_vector row_vector::Read_Plain_ASCII (ifstream& fin)
     pos    = row_vector::split (cooked, ' ', field);
 
     for (unsigned int i = 0; i < field.size(); i++) {
-      string snum = field[i];
+      std::string snum = field[i];
       const char* cptr = snum.data();
       /* No way to know where the amplitudes end and the
        * phases begin.  */
@@ -1420,12 +1422,12 @@ row_vector row_vector::Read_Plain_ASCII (ifstream& fin)
  * ReadPlain_ASCII_mT_Deg - read and process a Plain ASCII pulse file (Ampl(mT),Phase(degr))
  * @fin: file stream of the open pulse file
  */
-row_vector row_vector::Read_ASCII_mT_Deg (ifstream& fin)
+row_vector row_vector::Read_ASCII_mT_Deg (std::ifstream& fin)
 {
   int pos, numpts, count = 0;
-  string line, cooked;
-  vector<string> field;
-  vector<double> allpts;
+  std::string line, cooked;
+  std::vector<std::string> field;
+  std::vector<double> allpts;
 
   while (fin) {
     getline (fin, line);
@@ -1436,7 +1438,7 @@ row_vector row_vector::Read_ASCII_mT_Deg (ifstream& fin)
     pos    = row_vector::split (cooked, ' ', field);
 
     for (unsigned int i = 0; i < field.size(); i++) {
-      string snum = field[i];
+      std::string snum = field[i];
       const char* cptr = snum.data();
       /* No way to know where the amplitudes end and the
        * phases begin.  */

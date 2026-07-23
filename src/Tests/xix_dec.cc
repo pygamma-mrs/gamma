@@ -17,7 +17,7 @@ arbitrary orientation of the CAS tensor
 //#include <sys/time.h>
 //#include <sys/resource.h>
 
-using namespace std;
+//using namespace std;
 
 #define NPROP 100
 
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
   double D, delta_CSA, etha_CSA;
   double k, gamB1;
   int i,j,Fnp,count,qu,steps;
-  string name, names;
+  std::string name, names;
   const double thetam=54.73561032;
   double mas_freq, time_gamB1, mod_freq;
   double ltime, time, time_prop, scale;
@@ -78,24 +78,24 @@ int main(int argc, char *argv[])
   mod_freq = ntimes*mas_freq;
   //(void) gethostname(hostname,199);
 
-  cout << "\n\nSimulation of isotropic chemical shift by dipolar coupling\n";
-  cout << "==========================================================\n\n";
-  //  cout << "Program version: " << __FILE__ << " compiled at " << __DATE__ ", "
+  std::cout << "\n\nSimulation of isotropic chemical shift by dipolar coupling\n";
+  std::cout << "==========================================================\n\n";
+  //  std::cout << "Program version: " << __FILE__ << " compiled at " << __DATE__ ", "
   //       << __TIME__ << "\n";
-  //  cout << "running on machine " << hostname << "\n\n";
-  cout << "Parameters:\n";
-  cout << "rotation angle thetam    : " << thetam << " Degree\n";
-  cout << "dipolar coupling constant: " << D << " Hz\n";
-  cout << "CSA tensor (delta)       : " << delta_CSA << " Hz\n";
-  cout << "CSA tensor (etha)        : " << etha_CSA << "\n";
-  cout << "relativ orientation of CSA tensor: (" << alpha_CSA << "," <<
+  //  std::cout << "running on machine " << hostname << "\n\n";
+  std::cout << "Parameters:\n";
+  std::cout << "rotation angle thetam    : " << thetam << " Degree\n";
+  std::cout << "dipolar coupling constant: " << D << " Hz\n";
+  std::cout << "CSA tensor (delta)       : " << delta_CSA << " Hz\n";
+  std::cout << "CSA tensor (etha)        : " << etha_CSA << "\n";
+  std::cout << "relativ orientation of CSA tensor: (" << alpha_CSA << "," <<
           beta_CSA << "," << gamma_CSA << ")\n";
-  cout << "rf-Field Strength:         " << gamB1 << " Hz\n";
-  cout << "Rate constant (k):         " << k << " 1/s\n";
-  cout << "# of sampling points:      " << nprop << "\n";
-  cout << "Powder Quality Number:     " << qu << " (" << value1[qu] << " points)\n";
-  cout << "Number of data points:     " << Fnp << " points\n";
-  cout << "basic rf pulse frequency:  " << gamB1 << " Hz\n";
+  std::cout << "rf-Field Strength:         " << gamB1 << " Hz\n";
+  std::cout << "Rate constant (k):         " << k << " 1/s\n";
+  std::cout << "# of sampling points:      " << nprop << "\n";
+  std::cout << "Powder Quality Number:     " << qu << " (" << value1[qu] << " points)\n";
+  std::cout << "Number of data points:     " << Fnp << " points\n";
+  std::cout << "basic rf pulse frequency:  " << gamB1 << " Hz\n";
 
 	char tprop[100];
 #ifdef _MSC_VER
@@ -104,10 +104,10 @@ int main(int argc, char *argv[])
 	sprintf ( tprop, "%.10f", time_prop);
 #endif
 
-  cout << "length of one prop. (dw):  " << tprop << " s\n";
-  cout << "phase angle (phi):         " << phi << " degree\n";
-  cout << "Modulation frequency:      " << mod_freq << " Hz\n";
-  cout << "MAS frequency:             " << mas_freq << " Hz\n";
+  std::cout << "length of one prop. (dw):  " << tprop << " s\n";
+  std::cout << "phase angle (phi):         " << phi << " degree\n";
+  std::cout << "Modulation frequency:      " << mod_freq << " Hz\n";
+  std::cout << "MAS frequency:             " << mas_freq << " Hz\n";
 
 	char timex[100];
 #ifdef _MSC_VER
@@ -116,9 +116,9 @@ int main(int argc, char *argv[])
 	sprintf ( timex, "%.12f", time);
 #endif
 
-  cout << "time increments:           " << timex << "s\n";
-  cout << "Output filename:           " << name << "\n";
-  cout << "\n";
+  std::cout << "time increments:           " << timex << "s\n";
+  std::cout << "Output filename:           " << name << "\n";
+  std::cout << "\n";
 
 
   block_1D data(Fnp);
@@ -161,8 +161,8 @@ int main(int argc, char *argv[])
 //rotate CSA tensor into the PA system of the dipolar tensor
   Acsa = Acsa.rotate(alpha_CSA,beta_CSA,gamma_CSA);
 
-  string name1 = name+".mat";
-  string name2 = name;
+  std::string name1 = name+".mat";
+  std::string name2 = name;
 
 //here starts the powder loop
 //reference JCP 59 (8), 3992 (1973).
@@ -173,10 +173,10 @@ int main(int argc, char *argv[])
     gamma = 360.0 * ((value3[qu]*count) % value1[qu])/value1[qu];
     if(count % 10 == 1)
     { //getrusage(0, & me);
-      cout << count << "\tbeta = " << beta << "\talpha = "
+      std::cout << count << "\tbeta = " << beta << "\talpha = "
            << alpha << "\tgamma = " << gamma 
            << "\n";
-      cout.flush();
+      std::cout.flush();
     }
     scale = sin(beta/180.0*PI);
 
