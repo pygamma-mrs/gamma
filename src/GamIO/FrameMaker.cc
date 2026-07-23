@@ -54,7 +54,7 @@
 #include <cstdio>				// Include FILE
 #include <cmath>				// Inlcude for HUGE_VAL
 
-using namespace std;
+//using namespace std;
 
 #ifndef _MSC_VER				// If we are not using MSVC++
   std::string LBrak("\[");			// set string for bracket here
@@ -374,7 +374,7 @@ std::string FMFind(bool vocal)
   int N = FMNames.size();			// Number of path names
   std::string FME, FMName;				// FrameMaker execution command
   bool found = false;				// Flag if found executable
-	ifstream gexec;				    // FrameMaker executable?
+	std::ifstream gexec;				    // FrameMaker executable?
   int i=0;
  
 	for(; i<N && !found; i++)
@@ -382,7 +382,7 @@ std::string FMFind(bool vocal)
     FME = FMNames[i]; 				// Try this name first
     if(vocal)
       std::cout << "\n\t Seeking FrameMaker Executable " << FME;
-		gexec.open(FME.c_str(), ios_base::binary);
+		gexec.open(FME.c_str(), std::ios_base::binary);
     if(gexec.good() == true) 
 			found=true;			// If so, use this command
     if(vocal)
@@ -403,7 +403,7 @@ std::string FMFind(bool vocal)
     FME = FMNames[i] + std::string(".exe"); 				// Try this name first
     if(vocal)
       std::cout << "\n\t Seeking FrameMaker Executable " << FME;
-		gexec.open(FME.c_str(), ios_base::binary);
+		gexec.open(FME.c_str(), std::ios_base::binary);
     if( gexec.good() == true )
 			found=true;			// If so, use this command
 	if(vocal)
@@ -424,7 +424,7 @@ std::string FMFind(bool vocal)
     FME = FMNames[i] + std::string(".out"); 				// Try this name first
     if(vocal)
       std::cout << "\n\t Seeking FrameMaker Executable " << FME;
-		gexec.open(FME.c_str(), ios_base::binary);
+		gexec.open(FME.c_str(), std::ios_base::binary);
 		if( gexec.good() == true ) 
 			found=true;			// If so, use this command
     if(vocal)

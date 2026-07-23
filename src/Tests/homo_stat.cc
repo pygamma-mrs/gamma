@@ -13,7 +13,7 @@ Can run up to 10 spins with the CSA tensors.
 #define NPROP 100
 #define MAXSPINS 12
 
-using namespace std;
+//using namespace std;
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
   double D[MAXSPINS][MAXSPINS];
   double iso_CSA[MAXSPINS], delta_CSA[MAXSPINS], eta_CSA[MAXSPINS];
   int i,j,count,qu,Fnp;
-  string name, names;
+  std::string name, names;
   double dw;
   double scale;
   int nspins;
@@ -45,10 +45,10 @@ int main(int argc, char *argv[])
   ax.read(names);
   nspins = ax.spins();
   if(nspins < 2 || nspins > 11)
-  { cerr << "This program is written for a two to eleven spin system.\n";
-    cerr << "Please change your spin system definition in \n";
-    cerr << "the file " << names << ".\n";
-    cerr << "Aborting ....\n\n";
+  { std::cerr << "This program is written for a two to eleven spin system.\n";
+    std::cerr << "Please change your spin system definition in \n";
+    std::cerr << "the file " << names << ".\n";
+    std::cerr << "Aborting ....\n\n";
     exit(-1);
   }
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -76,28 +76,28 @@ int main(int argc, char *argv[])
   query_parameter(argc,argv,count++,"Output Filename             ? ", name);
 
 
-  cout << "\n\nSimulation of isotropic chemical shift by dipolar coupling\n";
-  cout << "==========================================================\n\n";
-  //cout << "Program version: " << __FILE__ << " compiled at " << __DATE__ ", "
+  std::cout << "\n\nSimulation of isotropic chemical shift by dipolar coupling\n";
+  std::cout << "==========================================================\n\n";
+  //std::cout << "Program version: " << __FILE__ << " compiled at " << __DATE__ ", "
   //     << __TIME__ << "\n\n";
-  cout << "Parameters:\n";
-  cout << "size of spin system            : " << nspins << " spins\n";
+  std::cout << "Parameters:\n";
+  std::cout << "size of spin system            : " << nspins << " spins\n";
   for(i=0;i<nspins-1;++i)
   { for(j=i+1;j<nspins;++j)
-    { cout << "dipolar coupling constant (" << i << "," << j << ") : " << 
+    { std::cout << "dipolar coupling constant (" << i << "," << j << ") : " << 
               D[i][j] << " Hz\n";
-      cout << "relativ orientation of D tensor: (" << alpha_D[i][j] << "," <<
+      std::cout << "relativ orientation of D tensor: (" << alpha_D[i][j] << "," <<
                beta_D[i][j] << "," << gamma_D[i][j] << ")\n";
     }
   }
   for(i=0;i<nspins;++i)
-  { cout << "isotropic chem shift(" << i << ") : " << 
+  { std::cout << "isotropic chem shift(" << i << ") : " << 
             iso_CSA[i] << " Hz\n";
-    cout << "delta of CSA tensor (" << i << ") : " << 
+    std::cout << "delta of CSA tensor (" << i << ") : " << 
             delta_CSA[i] << " Hz\n";
-    cout << "eta of CSA tensor (" << i << ") : " << 
+    std::cout << "eta of CSA tensor (" << i << ") : " << 
             eta_CSA[i] << "\n";
-    cout << "relativ orientation of CSA tensor: (" << alpha_CSA[i] << "," <<
+    std::cout << "relativ orientation of CSA tensor: (" << alpha_CSA[i] << "," <<
              beta_CSA[i] << "," << gamma_CSA[i] << ")\n";
   }
 
@@ -108,12 +108,12 @@ int main(int argc, char *argv[])
 	sprintf ( dws, "%f", dw);
 #endif
 
-  cout << "Powder Quality Number:         " << qu << "  (" << value1[qu] <<
+  std::cout << "Powder Quality Number:         " << qu << "  (" << value1[qu] <<
           " orientations)\n";
-  cout << "Number of data points:         " << Fnp << " points\n";
-  cout << "dwell time:                    " << dws << "s\n";
-  cout << "Output filename:               " << name << "\n";
-  cout << "\n";
+  std::cout << "Number of data points:         " << Fnp << " points\n";
+  std::cout << "dwell time:                    " << dws << "s\n";
+  std::cout << "Output filename:               " << name << "\n";
+  std::cout << "\n";
 
   block_1D datax(Fnp);
   block_2D data(nspins,Fnp);
@@ -152,8 +152,8 @@ int main(int argc, char *argv[])
     Acsa[i] = Acsa[i].rotate(alpha_CSA[i],beta_CSA[i],gamma_CSA[i]);
   }
 
-  string name1 = name + ".mat";
-  string name2 = name;
+  std::string name1 = name + ".mat";
+  std::string name2 = name;
 
 //this is the detection operator
   for(i=0;i<nspins;++i)
@@ -174,10 +174,10 @@ int main(int argc, char *argv[])
 			// Also, the time elapsed would be very machine specific so should
 			// not be part of this testing library (other libraries, maybe!).
 			// getrusage(0, & me);
-      cout << count << "\tbeta = " << beta << "\talpha = "
+      std::cout << count << "\tbeta = " << beta << "\talpha = "
            << alpha << "\tgamma = " << gamma << "\n";
       // << ",\ttime used: " << me.ru_utime.tv_sec << " seconds\n";
-      cout.flush();
+      std::cout.flush();
     }
     scale = sin(beta/180.0*PI);
 
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
 
   } // end of powder loop
 
-  //cout << "\nEntering matlab with parameters:  " << name1 << ", " << name2 << ", " << "data" << ", 1\n";
+  //std::cout << "\nEntering matlab with parameters:  " << name1 << ", " << name2 << ", " << "data" << ", 1\n";
 
   MATLAB(name1, name2, data, 1);
   exit(0);

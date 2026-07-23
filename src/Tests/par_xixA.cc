@@ -33,7 +33,7 @@ int lcm(int a, int b)
   return(c/a) ;
 }
 
-using namespace std;
+//using namespace std;
 
 int main(int argc, char *argv[])
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
   double delta_CSA[MAXSPINS];
   int i,j,k,k1,k2,Fnp,count,qu,steps;
   int n_pwI, n_pwS, n_evolve, n_cycle, n_prop;
-  string name, names;
+  std::string name, names;
   const double thetam=54.73561032;
   double gamB1I, gamB1S, mas_freq;
   double ltime, time, scale;
@@ -75,10 +75,10 @@ int main(int argc, char *argv[])
   ax.read(names);
   nspins = ax.spins();
   if(nspins < 2 || nspins >= 10)
-  { cerr << "This program is written for a two to nine spin system.\n";
-    cerr << "Please change your spin system definition in \n";
-    cerr << "the file " << names << ".\n";
-    cerr << "Aborting ....\n\n";
+  { std::cerr << "This program is written for a two to nine spin system.\n";
+    std::cerr << "Please change your spin system definition in \n";
+    std::cerr << "the file " << names << ".\n";
+    std::cerr << "Aborting ....\n\n";
     exit(-1);
   }
   for(i=0;i<nspins-1;++i)
@@ -112,9 +112,9 @@ int main(int argc, char *argv[])
   query_parameter(argc,argv,count++,"Output Filename             ? ", name);
  
   if(nstart >= nspins)
-  { cerr << "The starting density operator has a spin number which is\n";
-    cerr << "larger than the number of spins.\n";
-    cerr << "Aborting ....\n\n";
+  { std::cerr << "The starting density operator has a spin number which is\n";
+    std::cerr << "larger than the number of spins.\n";
+    std::cerr << "Aborting ....\n\n";
     exit(-1);
   }
 
@@ -132,40 +132,40 @@ int main(int argc, char *argv[])
 
   //(void) gethostname(hostname,199);
 
-  cout << "\n\nSimulation of CP Under Double XiX Irradiation             \n";
-  cout << "==========================================================\n\n";
-  //cout << "Program version: " << __FILE__ << " compiled at " << __DATE__ ", "
+  std::cout << "\n\nSimulation of CP Under Double XiX Irradiation             \n";
+  std::cout << "==========================================================\n\n";
+  //std::cout << "Program version: " << __FILE__ << " compiled at " << __DATE__ ", "
   //     << __TIME__ << "\n\n";
-  //cout << "running on machine " << hostname << "\n\n";
-  cout << "Parameters:\n";
-  cout << "rotation angle thetam          : " << thetam << " Degree\n";
-  cout << "size of spin system            : " << nspins << " spins\n";
-  cout << "initial density operator       : Iz(ax," << nstart << ")\n"; 
+  //std::cout << "running on machine " << hostname << "\n\n";
+  std::cout << "Parameters:\n";
+  std::cout << "rotation angle thetam          : " << thetam << " Degree\n";
+  std::cout << "size of spin system            : " << nspins << " spins\n";
+  std::cout << "initial density operator       : Iz(ax," << nstart << ")\n"; 
   for(i=0;i<nspins-1;++i)
   { for(j=i+1;j<nspins;++j)
-    { cout << "scalar  coupling constant (" << i << "," << j << ") : " << 
+    { std::cout << "scalar  coupling constant (" << i << "," << j << ") : " << 
               J[i][j] << " Hz\n";
-      cout << "dipolar coupling constant (" << i << "," << j << ") : " << 
+      std::cout << "dipolar coupling constant (" << i << "," << j << ") : " << 
               D[i][j] << " Hz\n";
-      cout << "relativ orientation of D tensor: (" << alpha_D[i][j] << "," <<
+      std::cout << "relativ orientation of D tensor: (" << alpha_D[i][j] << "," <<
                beta_D[i][j] << "," << gamma_D[i][j] << ")\n";
     }
   }
   for(i=0;i<nspins;++i)
-  { cout << "isotropic chemical shift (" << i << ") : " << iso_CSA[i] << " Hz\n";
-    cout << "anisotropy chemical shift (" << i << "): " << delta_CSA[i] << " Hz\n";
-    cout << "asymmetry chemical shift (" << i << ") : " << eta_CSA[i] << "\n";
-    cout << "relativ orientation of CSA tensor: (" << alpha_CSA[i] << "," <<
+  { std::cout << "isotropic chemical shift (" << i << ") : " << iso_CSA[i] << " Hz\n";
+    std::cout << "anisotropy chemical shift (" << i << "): " << delta_CSA[i] << " Hz\n";
+    std::cout << "asymmetry chemical shift (" << i << ") : " << eta_CSA[i] << "\n";
+    std::cout << "relativ orientation of CSA tensor: (" << alpha_CSA[i] << "," <<
              beta_CSA[i] << "," << gamma_CSA[i] << ")\n";
   }
-  cout << "# of sampling points:          " << n_prop << "\n";
-  cout << "# of rotor periods:            " << n_cycle << "\n";
-  cout << "rf field amplitude on I spins: " << gamB1I << " Hz\n";
-  cout << "rf field amplitude on S spins: " << gamB1S << " Hz\n";
-  cout << "Powder Quality Number:         " << qu << "  (" << value1[qu] <<
+  std::cout << "# of sampling points:          " << n_prop << "\n";
+  std::cout << "# of rotor periods:            " << n_cycle << "\n";
+  std::cout << "rf field amplitude on I spins: " << gamB1I << " Hz\n";
+  std::cout << "rf field amplitude on S spins: " << gamB1S << " Hz\n";
+  std::cout << "Powder Quality Number:         " << qu << "  (" << value1[qu] <<
           " orientations)\n";
-  cout << "Number of data points:         " << Fnp << " points\n";
-  cout << "MAS frequency:                 " << mas_freq << " Hz\n";
+  std::cout << "Number of data points:         " << Fnp << " points\n";
+  std::cout << "MAS frequency:                 " << mas_freq << " Hz\n";
   
   char timex[100];
 #ifdef _MSC_VER
@@ -174,8 +174,8 @@ int main(int argc, char *argv[])
 	sprintf ( timex, "%.6f", time_pwI);
 #endif
   
-  cout << "pulse length (XiX I):          " << timex << " s\n";
-  cout << "pulse length (XiX I):          " << n_pwI << " propagators\n";
+  std::cout << "pulse length (XiX I):          " << timex << " s\n";
+  std::cout << "pulse length (XiX I):          " << n_pwI << " propagators\n";
   
 #ifdef _MSC_VER
 	sprintf_s ( timex, "%.6f", time_pwS);
@@ -183,9 +183,9 @@ int main(int argc, char *argv[])
 	sprintf ( timex, "%.6f", time_pwS);
 #endif
   
-  cout << "pulse length (XiX S):          " << timex << " s\n";
-  cout << "pulse length (XiX S):          " << n_pwS << " propagators\n";
-  cout << "# of propagators/rotor cycle:  " << n_prop << "\n";
+  std::cout << "pulse length (XiX S):          " << timex << " s\n";
+  std::cout << "pulse length (XiX S):          " << n_pwS << " propagators\n";
+  std::cout << "# of propagators/rotor cycle:  " << n_prop << "\n";
   
 #ifdef _MSC_VER
 	sprintf_s ( timex, "%.8f", time_prop);
@@ -193,11 +193,11 @@ int main(int argc, char *argv[])
 	sprintf ( timex, "%.8f", time_prop);
 #endif  
   
-  cout << "length of one propagator:      " << timex << " s\n";
-  cout << "# of rotor cycles:             " << n_cycle << "\n";
-  cout << "# of evolution steps:          " << n_evolve << "\n";
-  cout << "flip angle per pulse (I):      " << angleI <<" degree\n";
-  cout << "flip angle per pulse (S):      " << angleS <<" degree\n";
+  std::cout << "length of one propagator:      " << timex << " s\n";
+  std::cout << "# of rotor cycles:             " << n_cycle << "\n";
+  std::cout << "# of evolution steps:          " << n_evolve << "\n";
+  std::cout << "flip angle per pulse (I):      " << angleI <<" degree\n";
+  std::cout << "flip angle per pulse (S):      " << angleS <<" degree\n";
   
 #ifdef _MSC_VER
 	sprintf_s ( timex, "%.8f", time);
@@ -205,10 +205,10 @@ int main(int argc, char *argv[])
 	sprintf ( timex, "%.8f", time);
 #endif  
 
-  cout << "time increments:               " << timex << "s\n";
-  cout << "Output filename:               " << name << "\n";
-  cout << "\n";
-  cout.flush();
+  std::cout << "time increments:               " << timex << "s\n";
+  std::cout << "Output filename:               " << name << "\n";
+  std::cout << "\n";
+  std::cout.flush();
 
   block_2D data(nspins,Fnp);
   for(k1=0;k1<nspins;++k1)
@@ -248,8 +248,8 @@ int main(int argc, char *argv[])
     Acsa[i] = Acsa[i].rotate(alpha_CSA[i],beta_CSA[i],gamma_CSA[i]);
   }
 
-  string name1 = name+".mat";
-  string name2 = name;
+  std::string name1 = name+".mat";
+  std::string name2 = name;
 
 //here starts the powder loop
 //reference JCP 59 (8), 3992 (1973).
@@ -260,10 +260,10 @@ int main(int argc, char *argv[])
     gamma = 360.0 * ((value3[qu]*count) % value1[qu])/value1[qu];
     if(count % 10 == 1)
     { //getrusage(0, & me);
-      cout << count << "\tbeta = " << beta << "\talpha = "
+      std::cout << count << "\tbeta = " << beta << "\talpha = "
            << alpha << "\tgamma = " << gamma 
            << "\n";
-      cout.flush();
+      std::cout.flush();
     }
     scale = sin(beta/180.0*PI);
 

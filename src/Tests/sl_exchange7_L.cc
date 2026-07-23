@@ -13,7 +13,7 @@ sl_exchange5.cc
 #define NPROP 1000
 #define MAXSPINS 3
 
-using namespace std;
+//using namespace std;
 
 int main(int argc, char *argv[])
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
   double D[MAXSPINS][MAXSPINS];
   double iso_CSA[MAXSPINS];
   int i,j,k,k1,k2,Fnp,count,qu,steps,nrotor;
-  string name, names;
+  std::string name, names;
   const double thetam=54.73561032;
   double mas_freq,gamB1;
   double ltime, time, time_prop, scale;
@@ -54,10 +54,10 @@ int main(int argc, char *argv[])
   ax.read(names);
   nspins = ax.spins();
   if(nspins != 3)
-  { cerr << "This program is written for a MAXSPINS spin system.\n";
-    cerr << "Please change your spin system definition in \n";
-    cerr << "the file " << names << ".\n";
-    cerr << "Aborting ....\n\n";
+  { std::cerr << "This program is written for a MAXSPINS spin system.\n";
+    std::cerr << "Please change your spin system definition in \n";
+    std::cerr << "the file " << names << ".\n";
+    std::cerr << "Aborting ....\n\n";
     exit(-1);
   }
   for(i=0;i<2;++i)
@@ -82,9 +82,9 @@ int main(int argc, char *argv[])
   query_parameter(argc,argv,count++,"Output Filename             ? ", name);
 
   if(nstart >= nspins)
-  { cerr << "The starting density operator has a spin number which is\n";
-    cerr << "larger than the number of spins.\n";
-    cerr << "Aborting ....\n\n";
+  { std::cerr << "The starting density operator has a spin number which is\n";
+    std::cerr << "larger than the number of spins.\n";
+    std::cerr << "Aborting ....\n\n";
     exit(-1);
   }
 
@@ -94,29 +94,29 @@ int main(int argc, char *argv[])
   time       = (1.0/mas_freq)/steps;
   kex        =1.0/(2.0*tauc);
 
-  cout << "\n\nSimulation of isotropic chemical shift by dipolar coupling\n";
-  cout << "==========================================================\n\n";
-  cout << "Parameters:\n";
-  cout << "rotation angle thetam          : " << thetam << " Degree\n";
-  cout << "size of spin system            : " << nspins << " spins\n";
-  cout << "initial density operator       : Ix(ax," << nstart << ")\n"; 
+  std::cout << "\n\nSimulation of isotropic chemical shift by dipolar coupling\n";
+  std::cout << "==========================================================\n\n";
+  std::cout << "Parameters:\n";
+  std::cout << "rotation angle thetam          : " << thetam << " Degree\n";
+  std::cout << "size of spin system            : " << nspins << " spins\n";
+  std::cout << "initial density operator       : Ix(ax," << nstart << ")\n"; 
   for(i=0;i<2;++i)
   { for(j=i+1;j<3;++j)
-    { cout << "dipolar coupling constant (" << i << "," << j << ") : " <<
+    { std::cout << "dipolar coupling constant (" << i << "," << j << ") : " <<
               D[i][j] << " Hz\n";
-      cout << "relativ orientation of D tensor: (" << alpha_D[i][j] << "," <<
+      std::cout << "relativ orientation of D tensor: (" << alpha_D[i][j] << "," <<
                beta_D[i][j] << "," << gamma_D[i][j] << ")\n";
     }
   }
   for(i=0;i<3;++i)
-  { cout << "isotropic chemical shift (" << i << ") : " << iso_CSA[i] << " Hz\n";
+  { std::cout << "isotropic chemical shift (" << i << ") : " << iso_CSA[i] << " Hz\n";
   }
-  cout << "# of sampling points:          " << nprop << "\n";
-  cout << "# of rotor periods:            " << nrotor << "\n";
-  cout << "Powder Quality Number:         " << qu << "  (" << value1[qu] <<
+  std::cout << "# of sampling points:          " << nprop << "\n";
+  std::cout << "# of rotor periods:            " << nrotor << "\n";
+  std::cout << "Powder Quality Number:         " << qu << "  (" << value1[qu] <<
           " orientations)\n";
-  cout << "Number of data points:         " << Fnp << " points\n";
-  cout << "MAS frequency:                 " << mas_freq << " Hz\n";
+  std::cout << "Number of data points:         " << Fnp << " points\n";
+  std::cout << "MAS frequency:                 " << mas_freq << " Hz\n";
 
 	char timex[100];
 #ifdef _MSC_VER
@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
 	sprintf ( timex, "%.6f", time);
 #endif
 
-  cout << "time increments:               " << timex << "s\n";
+  std::cout << "time increments:               " << timex << "s\n";
 
 	char tprop[100];
 #ifdef _MSC_VER
@@ -134,13 +134,13 @@ int main(int argc, char *argv[])
 	sprintf ( tprop, "%.5f", time_prop);
 #endif
 
-  cout << "dwell time:                    " << tprop << "s\n";
-  cout << "jump rate constant             " << kex << " s-1\n";
-  cout << "correlation time               " << tauc << " s\n";
-  cout << "rf-field amplitude:            " << gamB1 << " Hz\n";
-  cout << "Output filename:               " << name << "\n";
-  cout << "\n";
-  cout.flush();
+  std::cout << "dwell time:                    " << tprop << "s\n";
+  std::cout << "jump rate constant             " << kex << " s-1\n";
+  std::cout << "correlation time               " << tauc << " s\n";
+  std::cout << "rf-field amplitude:            " << gamB1 << " Hz\n";
+  std::cout << "Output filename:               " << name << "\n";
+  std::cout << "\n";
+  std::cout.flush();
 
   ax.Kex(kex,0);
   matrix mx(ax.HS()*ax.HS(), ax.HS()*ax.HS(), i_matrix_type); // ExpLOp is the identity superop
@@ -174,8 +174,8 @@ int main(int argc, char *argv[])
   }
 
 
-  string name1 = name+".mat";
-  string name2 = name;
+  std::string name1 = name+".mat";
+  std::string name2 = name;
 
 //here starts the powder loop
 //reference JCP 59 (8), 3992 (1973).
@@ -186,9 +186,9 @@ int main(int argc, char *argv[])
     gamma = 360.0 * ((value3[qu]*count) % value1[qu])/value1[qu];
     if(count % 10 == 1)
     { //getrusage(0, & me);
-      cout << count << "\tbeta = " << beta << "\talpha = "
+      std::cout << count << "\tbeta = " << beta << "\talpha = "
            << alpha << "\tgamma = " << gamma << "\n";
-      cout.flush();
+      std::cout.flush();
     }
     scale = sin(beta/180.0*PI);
     sigma = iso_CSA[nstart]/sqrt(iso_CSA[nstart]*iso_CSA[nstart]+gamB1*gamB1)*Iz(ax,nstart) +
@@ -228,14 +228,14 @@ int main(int argc, char *argv[])
       for(i=-2;i<=2;++i)
         Ham += exp(complex(0,i*2.0*PI*ltime*mas_freq)) * H[i+2];
       L = complex(0,2.0*PI)*commutator(Ham);
-//    cout << "\nHam = \n";
-//    cout << Ham;
-//    cout << "\nL = \n";
-//    cout << L;
+//    std::cout << "\nHam = \n";
+//    std::cout << Ham;
+//    std::cout << "\nL = \n";
+//    std::cout << L;
       K = Kex(ax, Ham.get_basis());
-//    cout << "\nK = \n";
-//    cout << K;
-//    cout.flush();
+//    std::cout << "\nK = \n";
+//    std::cout << K;
+//    std::cout.flush();
       L += K;
       UT = exp(L,-time);
       UT.set_HBR();
